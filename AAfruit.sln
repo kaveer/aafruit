@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAfruit", "AAfruit\AAfruit.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAfruitWholesale", "AAfruitWholesale\AAfruitWholesale.csproj", "{758E5E80-8A92-4E17-A31D-42AE03BA067E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAfruitCustomer", "AAfruitCustomer\AAfruitCustomer.csproj", "{62D02F2F-F5A1-4338-B7BD-DC79F78D726A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{758E5E80-8A92-4E17-A31D-42AE03BA067E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{758E5E80-8A92-4E17-A31D-42AE03BA067E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{758E5E80-8A92-4E17-A31D-42AE03BA067E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62D02F2F-F5A1-4338-B7BD-DC79F78D726A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62D02F2F-F5A1-4338-B7BD-DC79F78D726A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62D02F2F-F5A1-4338-B7BD-DC79F78D726A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62D02F2F-F5A1-4338-B7BD-DC79F78D726A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
