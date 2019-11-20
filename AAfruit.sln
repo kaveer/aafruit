@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAfruitCustomer", "AAfruitC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{FBEE548D-4E44-4A2F-A351-35428A776836}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{D596FD11-6FC4-4279-A5F4-09EA67291ABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{2B506F83-62AA-453E-9936-1A205108B05D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{FBEE548D-4E44-4A2F-A351-35428A776836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBEE548D-4E44-4A2F-A351-35428A776836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBEE548D-4E44-4A2F-A351-35428A776836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D596FD11-6FC4-4279-A5F4-09EA67291ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D596FD11-6FC4-4279-A5F4-09EA67291ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D596FD11-6FC4-4279-A5F4-09EA67291ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D596FD11-6FC4-4279-A5F4-09EA67291ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B506F83-62AA-453E-9936-1A205108B05D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B506F83-62AA-453E-9936-1A205108B05D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B506F83-62AA-453E-9936-1A205108B05D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B506F83-62AA-453E-9936-1A205108B05D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
