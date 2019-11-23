@@ -62,40 +62,40 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stock <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:HyperLink ID="HyperLink17" runat="server">Inventory</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink17" NavigateUrl="~/WebForms/Stock/Inventory.aspx" runat="server">Inventory</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink18" runat="server">New fruit</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink18" NavigateUrl="~/WebForms/Stock/New.aspx" runat="server">New fruit</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink19" runat="server">Configuration</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink19" NavigateUrl="~/WebForms/Stock/Configuration.aspx" runat="server">Configuration</asp:HyperLink></li>
                                 </ul>
                             </li>
                             <li>
-                                <asp:HyperLink ID="HyperLink16" NavigateUrl="#" runat="server">Customer</asp:HyperLink></li>
+                                <asp:HyperLink ID="HyperLink16" NavigateUrl="~/WebForms/Customer/Customer.aspx" runat="server">Customer</asp:HyperLink></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Suppliers <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:HyperLink ID="HyperLink12" runat="server">View</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink12" NavigateUrl="~/WebForms/Supplier/View.aspx" runat="server">View</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink13" runat="server">New</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink13" NavigateUrl="~/WebForms/Supplier/New.aspx" runat="server">New</asp:HyperLink></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sales <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:HyperLink ID="HyperLink14" runat="server">Sales</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink14" NavigateUrl="~/WebForms/Sale/Sales.aspx" runat="server">Sales</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink15" runat="server">Process</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink15" NavigateUrl="~/WebForms/Sale/Process.aspx" runat="server">Process</asp:HyperLink></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:HyperLink ID="HyperLink10" runat="server">Sales</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink10" NavigateUrl="~/WebForms/Report/Sales.aspx" runat="server">Sales</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink11" runat="server">Purchase</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink11" NavigateUrl="~/WebForms/Report/Purchase.aspx" runat="server">Purchase</asp:HyperLink></li>
                                 </ul>
                             </li>
                         </ul>
@@ -109,10 +109,10 @@
                                     <li>
                                         <asp:HyperLink ID="HyperLink4" runat="server">Log as customer</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink3" runat="server">Settings</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink3" NavigateUrl="~/WebForms/More/Setting.aspx" runat="server">Settings</asp:HyperLink></li>
                                     <li role="separator" class="divider"></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink1" runat="server">About us</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/WebForms/More/About.aspx" runat="server">About us</asp:HyperLink></li>
                                 </ul>
                             </li>
                         </ul>
