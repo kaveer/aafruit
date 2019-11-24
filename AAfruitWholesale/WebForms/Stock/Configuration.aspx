@@ -10,24 +10,30 @@
                 <div class="form-horizontal">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-1 control-label">Fruit</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-11">
                             <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-1 control-label">Description</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-11">
                             <asp:TextBox ID="TextBox1" CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-1 control-label">Available</label>
-                        <div class="col-sm-5">
+                        <div class="col-sm-6">
                             <asp:TextBox ID="TextBox2" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                         </div>
                         <label for="inputEmail3" class="col-sm-1 control-label">Unit</label>
                         <div class="col-sm-4">
                             <asp:DropDownList ID="DropDownList2" CssClass="form-control" runat="server"></asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-1 control-label">Unit price</label>
+                        <div class="col-sm-11">
+                            <asp:TextBox ID="TextBox3" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                         </div>
                     </div>
                 </div>
