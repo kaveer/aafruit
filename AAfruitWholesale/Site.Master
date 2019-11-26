@@ -83,7 +83,7 @@
                                     <li>
                                         <asp:HyperLink ID="HyperLink12" NavigateUrl="~/WebForms/Supplier/View.aspx" runat="server">View</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink13" NavigateUrl="~/WebForms/Supplier/New.aspx" runat="server">New</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink13" NavigateUrl="~/WebForms/Supplier/Upsert.aspx" runat="server">New</asp:HyperLink></li>
                                 </ul>
                             </li>
                             <li class="dropdown">

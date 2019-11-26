@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace AAfruitWholesale.WebForms.Supplier
 {
-    public partial class New : System.Web.UI.Page
+    public partial class Upsert : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

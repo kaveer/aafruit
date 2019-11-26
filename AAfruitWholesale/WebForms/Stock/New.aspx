@@ -75,4 +75,5 @@
                 <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Add Supplier" />
             </div>
         </div>
+    </div>
 </asp:Content>
