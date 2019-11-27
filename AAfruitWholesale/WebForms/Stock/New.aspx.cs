@@ -11,7 +11,7 @@ namespace AAfruitWholesale.WebForms.Stock
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var d = DateTime.Today;
         }
     }
 }
