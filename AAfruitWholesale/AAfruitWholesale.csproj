@@ -134,6 +134,7 @@
     <Content Include="Login.aspx" />
     <Content Include="WebForms\Customer\Customer.aspx" />
     <Content Include="WebForms\More\About.aspx" />
+    <Content Include="WebForms\More\Add.aspx" />
     <Content Include="WebForms\More\Setting.aspx" />
     <Content Include="WebForms\Report\Purchase.aspx" />
     <Content Include="WebForms\Report\Sales.aspx" />
@@ -244,6 +245,13 @@
     </Compile>
     <Compile Include="WebForms\More\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\More\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\More\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\More\Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>

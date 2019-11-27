@@ -118,7 +118,7 @@
                                         <asp:HyperLink ID="HyperLink3" NavigateUrl="~/WebForms/More/Setting.aspx" runat="server">Settings</asp:HyperLink></li>
                                     <li role="separator" class="divider"></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/WebForms/More/About.aspx" runat="server">About us</asp:HyperLink></li>
+                                        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/WebForms/More/Add.aspx" runat="server">Add user</asp:HyperLink></li>
                                 </ul>
                             </li>
                         </ul>
