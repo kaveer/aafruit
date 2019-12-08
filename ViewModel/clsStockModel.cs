@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    public class StockSummary
+    public class StockSummaryModel
     {
 
         public clsFruitModel objFruit { get; set; }
