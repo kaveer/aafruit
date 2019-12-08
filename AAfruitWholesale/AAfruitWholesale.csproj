@@ -145,6 +145,15 @@
     <Content Include="WebForms\Stock\New.aspx" />
     <Content Include="WebForms\Supplier\Upsert.aspx" />
     <Content Include="WebForms\Supplier\View.aspx" />
+    <Content Include="Documents\ClassDiagram.vsdx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documents\FruitWholesaleERD.simp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documents\FruitWholesales.vsdx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
