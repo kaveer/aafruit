@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    class clsDiscountModel
+    public class clsDiscountModel
     {
         public int iDiscountId { get; set; }
         public int iValue { get; set; }

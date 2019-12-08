@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    class clsCountryModel
+    public class clsCountryModel
     {
         public int iCountryId { get; set; }
         public string sCountryName { get; set; }

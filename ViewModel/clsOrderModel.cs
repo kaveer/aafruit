@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    class clsOrderModel
+    public class clsOrderModel
     {
         public int iOrderId { get; set; }
         public OrderType eOrderType { get; set; }
