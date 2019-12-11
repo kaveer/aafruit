@@ -39,13 +39,13 @@
 
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <asp:TextBox TextMode="Email" ID="exampleInputEmail1" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox TextMode="Email" ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <asp:TextBox TextMode="Password" ID="exampleInputPassword1" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox TextMode="Password" ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
-                <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Login" />
+                <asp:Button ID="btnLogin" OnClick="btnLogin_Click" CssClass="btn btn-primary" runat="server" Text="Login" />
             </div>
         </div>
 
