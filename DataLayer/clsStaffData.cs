@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModel;
 
-namespace BusinessLayer
+namespace DataLayer
 {
-    public class ClsStaff:clsUser
+    public class clsStaffData:clsUserData
     {
         public void AddUser(clsUserDetailsModel item)
         {
 
         }
 
-        public List<clsFruitModel> ViewInventory()
+        public DataSet ViewInventory()
         {
             return null;
         }
@@ -24,7 +25,7 @@ namespace BusinessLayer
 
         }
 
-        public List<clsUserDetailsModel> RetrieveUser(UserType item)
+        public DataSet RetrieveUser(UserType item)
         {
             return null;
         }
@@ -34,7 +35,7 @@ namespace BusinessLayer
 
         }
 
-        public clsUserDetailsModel GetUserByUserDetailId(int userDetails)
+        public DataSet GetUserByUserDetailId(int userDetails)
         {
             return null;
         }
@@ -44,16 +45,14 @@ namespace BusinessLayer
 
         }
 
-        public List<clsOrderModel> SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
+        public DataSet SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
             return null;
         }
 
-        public List<StockSummaryModel> PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
+        public DataSet PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
             return null;
         }
-
-
     }
 }
