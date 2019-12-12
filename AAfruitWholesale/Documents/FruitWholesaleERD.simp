@@ -27,7 +27,7 @@
       </counter>
       <counter>
         <item-type type-id="" type="AbstractElementGroup" />
-        <value>2</value>
+        <value>9</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -39,7 +39,7 @@
     <fields>
       <counter>
         <type>SoftwareIdeasModeler.Core.DiagramItems.Erd.ErdEntityAttribute</type>
-        <value>64</value>
+        <value>65</value>
       </counter>
     </fields>
   </counters>
@@ -87,7 +87,7 @@
       </meta>
       <abstract-items />
       <sub-models />
-      <diagram type="entity-relationship" id="p1aa1aa1aead7469d930629cdc3784a4c_816998573" name="EntityRelationshipDiagram1" order-index="1" uid="" show-id="false" show-name="true" show-parent-name="false" name-style="local-auto-parents" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-special-indicators="false" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="482,202">
+      <diagram type="entity-relationship" id="p1aa1aa1aead7469d930629cdc3784a4c_816998573" name="EntityRelationshipDiagram1" order-index="1" uid="" show-id="false" show-name="true" show-parent-name="false" name-style="local-auto-parents" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-special-indicators="false" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="false" show-relationship-texts="true" show-description="false" show-field-description="false" auto-routed-paths="false" view-location="-13,205">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
@@ -111,7 +111,7 @@
               <attribute uid="a0144f11a331640e585cc309e47132567982" cid="ELEM001" name="UserId" type="Integer" type-id="Uml.Integer" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
-              <attribute uid="aca9566e3acdc48258fafc60cf05d167d180" cid="ELEM002" name="Username" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+              <attribute uid="aca9566e3acdc48258fafc60cf05d167d180" cid="ELEM002" name="Email" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
               <attribute uid="adc4189387dc942c5b23396347ab2cc72389" cid="ELEM003" name="Password" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
@@ -167,6 +167,9 @@
                 <style class="default" />
               </attribute>
               <attribute uid="ad396e1cceaf645edb1750a8c44f6ea51192" cid="ELEM033" name="Status" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
+              <attribute uid="a7ba0d932a1af499ea44ab68650163d8b274" cid="ELEM064" name="Fax" type="" type-id="" type-size="" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
                 <style class="default" />
               </attribute>
             </attributes>
@@ -501,7 +504,7 @@
             <erd-entity show-nullability="true" />
           </item>
           <item id="13a27109fa5540ff955dc3337ebb45a9" iid="ee8ae8d5e6bc4b1d99f979ecccf20b63" anchor="None" creation-date="11/10/2019 16:12:39" order-index="1" type="entity">
-            <layout ax="358" ay="265" awidth="212" aheight="275" x="358" y="265" width="212" height="275" />
+            <layout ax="358" ay="265" awidth="212" aheight="291" x="358" y="265" width="212" height="291" />
             <erd-entity show-nullability="true" />
           </item>
           <item id="b603f49b4ed54f17815c42cbbccfea52" iid="8ecf374496314a9ca99f4009de3b64bf" anchor="None" creation-date="11/10/2019 16:18:37" order-index="3" type="entity">
@@ -513,7 +516,7 @@
             <erd-entity show-nullability="true" />
           </item>
           <item id="0543763090474839af2af2af01f5646b" iid="ec4d8ec0946a47c7bf921443d148d150" creation-date="11/10/2019 17:00:41" order-index="6" type="relation">
-            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="true" auto-path="" x1="684" y1="619" x2="570" y2="493" start-border-pos="0.875" end-border-pos="0.457272727272727" name-position="0,0">
+            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="true" auto-path="" x1="684" y1="619" x2="570" y2="493" start-border-pos="0.875" end-border-pos="0.445876288659794" name-position="0,0">
               <points>
                 <point x="684" y="619" />
                 <point x="570" y="493" />
@@ -522,7 +525,7 @@
             <relation from="429557d2cfa245d8b13d1d9b420ee215" from-iid="c163530920134683b805fbad4fc87e44" to="13a27109fa5540ff955dc3337ebb45a9" to-iid="ee8ae8d5e6bc4b1d99f979ecccf20b63" to-field="a6268d2ee3b0a44728a28ca192640d3cc93" />
           </item>
           <item id="aa7474780f5041089a505376a1917361" iid="3c111c8a17ff42bbbdd6559c6fd2a179" creation-date="11/10/2019 17:03:43" order-index="7" type="relation">
-            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="true" auto-path="" x1="282" y1="317" x2="358" y2="316" start-border-pos="0.375" end-border-pos="0.953636363636364" name-position="0,0">
+            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="true" lock-end-point="true" lock-to-fields="true" auto-path="" x1="282" y1="317" x2="358" y2="316" start-border-pos="0.375" end-border-pos="0.956185567010309" name-position="0,0">
               <points>
                 <point x="282" y="317" />
                 <point x="358" y="316" />
@@ -552,7 +555,7 @@
             <erd-entity show-nullability="true" />
           </item>
           <item id="bbe9c2f3eec44c2ca3749737be89b309" iid="6719324fd5b744a694a43160e3ec75a9" creation-date="11/10/2019 20:51:16" order-index="12" type="relation">
-            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="true" lock-end-point="false" lock-to-fields="true" auto-path="" x1="358" y1="332" x2="282" y2="469" start-border-pos="0.939090909090909" end-border-pos="0.3046875" name-position="0,0">
+            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="true" lock-end-point="false" lock-to-fields="true" auto-path="" x1="358" y1="332" x2="282" y2="469" start-border-pos="0.942439862542955" end-border-pos="0.3046875" name-position="0,0">
               <points>
                 <point x="358" y="332" />
                 <point x="282" y="469" />
@@ -561,7 +564,7 @@
             <relation from="13a27109fa5540ff955dc3337ebb45a9" from-iid="ee8ae8d5e6bc4b1d99f979ecccf20b63" from-field="ac7415107249a49728220cc468db284a1413" to="b603f49b4ed54f17815c42cbbccfea52" to-iid="8ecf374496314a9ca99f4009de3b64bf" to-field="a899c01f9fe874725af75dfeb2ec8ec9f797" />
           </item>
           <item id="e9c9b8c6071f4bb68fcb8155a6c189c3" iid="03f15362210d4a64a4b19a6266f0c4ed" creation-date="11/10/2019 20:54:43" order-index="13" type="relation">
-            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="true" auto-path="" x1="570" y1="300" x2="684" y2="400" start-border-pos="0.281818181818182" end-border-pos="0.9203125" name-position="0,0">
+            <layout start-role-position="25,15" end-role-position="24.34054,-15.75179" line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="true" auto-path="" x1="570" y1="300" x2="684" y2="400" start-border-pos="0.280068728522337" end-border-pos="0.9203125" name-position="0,0">
               <points>
                 <point x="570" y="300" />
                 <point x="684" y="400" />
@@ -583,7 +586,7 @@
             <erd-entity show-nullability="true" />
           </item>
           <item id="5f72b44cd774462d96d866ad09c62b0a" iid="e0b1fa45eb424d7597cdc9cf687de653" creation-date="11/10/2019 21:09:57" order-index="16" type="relation">
-            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="true" auto-path="" x1="570" y1="300" x2="679" y2="161" start-border-pos="0.281818181818182" end-border-pos="0.942351598173516" name-position="0,0">
+            <layout start-role-position="25,15" end-role-position="25,-15" line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="true" auto-path="" x1="570" y1="300" x2="679" y2="161" start-border-pos="0.280068728522337" end-border-pos="0.942351598173516" name-position="0,0">
               <points>
                 <point x="570" y="300" />
                 <point x="679" y="161" />
