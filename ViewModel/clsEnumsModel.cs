@@ -15,7 +15,8 @@ namespace ViewModel
         Admin = 1,
         Staff = 2,
         Customer = 3,
-        Supplier = 4
+        Supplier = 4,
+        AdminStaff = 5
     }
 
     public enum OrderType
@@ -35,5 +36,10 @@ namespace ViewModel
         Hectogram = 3,
         Kilogram = 4,
         Ton = 5
+    }
+
+    public  enum ErrorStatus
+    {
+        LoginFail = 1
     }
 }

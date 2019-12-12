@@ -35,11 +35,6 @@ namespace DataLayer
 
         }
 
-        public DataSet GetUserByUserDetailId(int userDetails)
-        {
-            return null;
-        }
-
         public void UpdateOrderStatus(int orderId, OrderType item)
         {
 

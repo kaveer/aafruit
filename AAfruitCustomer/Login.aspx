@@ -45,7 +45,13 @@
                     <label for="exampleInputPassword1">Password</label>
                     <asp:TextBox TextMode="Password" ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
+                <asp:Panel ID="pnlError" Visible="false" runat="server">
+                    <div id="error" class="alert alert-danger">
+                        <strong>Error!</strong> <asp:Label ID="lblError" runat="server" Text="Label"></asp:Label>
+                    </div>
+                </asp:Panel>
                 <asp:Button ID="btnLogin" OnClick="btnLogin_Click" CssClass="btn btn-primary" runat="server" Text="Login" />
+                <asp:Button ID="btnSignUp" OnClick="btnSignUp_Click" CssClass="btn btn-primary" runat="server" Text="Sign Up" />
             </div>
         </div>
 
@@ -94,10 +100,11 @@
                         © 2019 Copyright:<a href="#">AA fruits</a>
                     </div>
                 </div>
-
             </div>
         </footer>
 
+
     </form>
+
 </body>
 </html>

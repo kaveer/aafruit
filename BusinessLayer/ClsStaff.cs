@@ -34,11 +34,6 @@ namespace BusinessLayer
 
         }
 
-        public clsUserDetailsModel GetUserByUserDetailId(int userDetails)
-        {
-            return null;
-        }
-
         public void UpdateOrderStatus(int orderId, OrderType item)
         {
 
