@@ -11,5 +11,6 @@ namespace ViewModel
         public int iUserId { get; set; }
         public string sUsername { get; set; }
         public string sPassword { get; set; }
+        public string sReEnterPassword { get; set; }
     }
 }

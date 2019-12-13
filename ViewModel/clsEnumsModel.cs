@@ -40,6 +40,16 @@ namespace ViewModel
 
     public  enum ErrorStatus
     {
-        LoginFail = 1
+        LoginFail = 1,
+        LoadCountryMasterDataFail = 2,
+        SignUpFail = 3,
+
+        SignupUsernameMissing = 4,
+        SigupPasswordMissing = 5,
+        SignupPasswordNotMatch = 6,
+        SignupNameMissing = 7,
+        SignupSurnameMissing = 8,
+        SignupCompanyMissing = 9,
+        SignupRePasswordMissing = 10
     }
 }

@@ -12,9 +12,10 @@ namespace ViewModel
         public string sName { get; set; }
         public string sSurname { get; set; }
         public string sAddress { get; set; }
-        public int iFixLine { get; set; }
-        public int iFax { get; set; }
-        public int iMobile { get; set; }
+        public string sEmail { get; set; }
+        public string sFixLine { get; set; }
+        public string sFax { get; set; }
+        public string sMobile { get; set; }
         public string sWebsite { get; set; }
         public string sNote { get; set; }
         public string sCompany { get; set; }

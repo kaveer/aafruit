@@ -65,12 +65,99 @@ namespace DataLayer
 
         public DataSet SignUp(clsUserDetailsModel item)
         {
-            return null;
+            DataSet result = new DataSet();
+            DataTable userData = new DataTable();
+            DataTable userDetailsData = new DataTable();
+
+            userData = SaveUserData(item);
+            if (userData.Rows.Count == 0)
+                throw new Exception();
+
+            item.iUserId = Convert.ToInt32(userData.Rows[0][0]);
+            userDetailsData = SaveUserDetails(item);
+
+            result.Tables.Add(userData);
+            result.Tables.Add(userDetailsData);
+
+            return result;
         }
 
         public DataSet ViewOrder(bool isStaff, int customerId, OrderType orderType)
         {
             return null;
         }
+
+        private DataTable SaveUserData(clsUserDetailsModel item)
+        {
+            DataTable result = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserSave", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@email", item.sUsername));
+            command.Parameters.Add(new SqlParameter("@password", item.sPassword));
+
+            result.Load(command.ExecuteReader());
+            if (result?.Rows.Count == 0)
+                throw new Exception();
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
+        }
+
+        private DataTable SaveUserDetails(clsUserDetailsModel item)
+        {
+            DataTable result = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserDetailsSave", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@userId", item.iUserId));
+            command.Parameters.Add(new SqlParameter("@userTypeId", (int)item.eUserType));
+            command.Parameters.Add(new SqlParameter("@status", item.bStatus));
+
+            command.Parameters.Add(new SqlParameter("@name", item.sName));
+            command.Parameters.Add(new SqlParameter("@surnmae", item.sSurname));
+            command.Parameters.Add(new SqlParameter("@address", item.sAddress));
+            command.Parameters.Add(new SqlParameter("@countryId", item.iCountryId));
+
+            command.Parameters.Add(new SqlParameter("@email", item.sEmail));
+            command.Parameters.Add(new SqlParameter("@fix", item.sFixLine));
+            command.Parameters.Add(new SqlParameter("@mobile", item.sMobile));
+
+            command.Parameters.Add(new SqlParameter("@company", item.sCompany));
+            command.Parameters.Add(new SqlParameter("@brn", item.sBRN));
+            command.Parameters.Add(new SqlParameter("@note", item.sNote));
+
+            result.Load(command.ExecuteReader());
+            if (result?.Rows.Count == 0)
+                throw new Exception();
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
+        }
+
     }
 }

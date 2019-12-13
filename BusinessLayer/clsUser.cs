@@ -16,7 +16,7 @@ namespace BusinessLayer
             clsUserDetailsModel result = null;
             DataSet dataSet = new DataSet();
 
-            if (IsControlValid(email, password))
+            if (IsLoginModelValid(email, password))
             {
                 dataSet = dataLayer.Login(email, password, userType);
 
@@ -44,20 +44,68 @@ namespace BusinessLayer
 
         public clsUserDetailsModel SignUp(clsUserDetailsModel item)
         {
-            return null;
-        }  
+            clsUserDetailsModel result = new clsUserDetailsModel();
+            DataSet data = new DataSet();
+
+            if (IsSignUpModelValid(item))
+            {
+                data = dataLayer.SignUp(item);
+
+                if (data?.Tables.Count == 0)
+                    throw new Exception();
+
+                if (data?.Tables[0].Rows.Count == 0 || data?.Tables[1].Rows.Count == 0)
+                    throw new Exception();
+
+                result = new clsUserDetailsModel()
+                {
+                    iUserId = Convert.ToInt32(data?.Tables[0].Rows[0][0]),
+                    iUserDetailsId = Convert.ToInt32(data?.Tables[1].Rows[0][0]),
+                };
+            }
+
+            return result;
+        }
 
         public List<clsOrderModel> ViewOrder(bool isStaff, int customerId, OrderType orderType)
         {
             return null;
         }
 
-        private bool IsControlValid(string username, string password)
+        private bool IsLoginModelValid(string username, string password)
         {
             bool result = true;
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 throw new FormatException("Please enter uername or password");
+
+            return result;
+        }
+
+        private bool IsSignUpModelValid(clsUserDetailsModel item)
+        {
+            bool result = true;
+
+            if (string.IsNullOrWhiteSpace(item.sUsername))
+                throw new FormatException(Convert.ToString((int)ErrorStatus.SignupUsernameMissing));
+
+            if (string.IsNullOrWhiteSpace(item.sPassword))
+                throw new FormatException(Convert.ToString((int)ErrorStatus.SigupPasswordMissing));
+
+            if (string.IsNullOrWhiteSpace(item.sReEnterPassword))
+                throw new FormatException(Convert.ToString((int)ErrorStatus.SignupRePasswordMissing));
+
+            if (item.sPassword != item.sReEnterPassword)
+                throw new FormatException(Convert.ToString((int)ErrorStatus.SignupPasswordNotMatch));
+
+            if (string.IsNullOrWhiteSpace(item.sName))
+                throw new FormatException(Convert.ToString((int)ErrorStatus.SignupNameMissing));
+
+            if (string.IsNullOrWhiteSpace(item.sSurname))
+                throw new FormatException(Convert.ToString((int)ErrorStatus.SignupSurnameMissing));
+
+            if (string.IsNullOrWhiteSpace(item.sCompany))
+                throw new FormatException(Convert.ToString((int)ErrorStatus.SignupCompanyMissing));
 
             return result;
         }
