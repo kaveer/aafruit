@@ -32,14 +32,49 @@ namespace BusinessLayer
             return result;
         }
 
-        public clsUserDetailsModel GetUserByUserDetailId(int userDetails)
+        public clsUserDetailsModel GetUserByUserDetailId(int userDetailsId)
         {
-            return null;
+            clsUserDetailsModel result = new clsUserDetailsModel();
+            DataSet data = new DataSet();
+            if (userDetailsId == 0)
+                throw new Exception();
+
+            data = dataLayer.GetUserByUserDetailId(userDetailsId);
+            if (data?.Tables.Count == 0 || data?.Tables[0]?.Rows.Count == 0)
+                throw new Exception();
+
+            result = new clsUserDetailsModel()
+            {
+                iUserId = Convert.ToInt32(data.Tables[0].Rows[0][0]),
+                sUsername = data.Tables[0].Rows[0][1].ToString(),
+                sPassword = data.Tables[0].Rows[0][2].ToString(),
+                sReEnterPassword = data.Tables[0].Rows[0][2].ToString(),
+                iUserDetailsId = userDetailsId,
+                eUserType = GetUserType(Convert.ToInt32(data.Tables[0].Rows[0][5].ToString())),
+                sName = data.Tables[0].Rows[0][6].ToString(),
+                sSurname = data.Tables[0].Rows[0][7].ToString(),
+                sAddress = data.Tables[0].Rows[0][8].ToString(),
+                sEmail = data.Tables[0].Rows[0][9].ToString(),
+                sFixLine = data.Tables[0].Rows[0][10].ToString(),
+                sWebsite = data.Tables[0].Rows[0][11].ToString(),
+                sNote = data.Tables[0].Rows[0][12].ToString(),
+                sCompany = data.Tables[0].Rows[0][13].ToString(),
+                sBRN = data.Tables[0].Rows[0][14].ToString(),
+                iCountryId = Convert.ToInt32(data.Tables[0].Rows[0][15].ToString()),
+                sMobile = data.Tables[0].Rows[0][16].ToString(),
+                bStatus = Convert.ToBoolean(data.Tables[0].Rows[0][17].ToString()),
+                sFax = data.Tables[0].Rows[0][18].ToString(),
+            };
+
+            return result;
         }
+
+        
 
         public void Setting(clsUserDetailsModel item)
         {
-
+            if (IsSignUpModelValid(item))
+                dataLayer.Setting(item);
         }
 
         public clsUserDetailsModel SignUp(clsUserDetailsModel item)
@@ -106,6 +141,34 @@ namespace BusinessLayer
 
             if (string.IsNullOrWhiteSpace(item.sCompany))
                 throw new FormatException(Convert.ToString((int)ErrorStatus.SignupCompanyMissing));
+
+            return result;
+        }
+
+        private UserType GetUserType(int userTypeId)
+        {
+            UserType result = new UserType();
+
+            switch (userTypeId)
+            {
+                case (int)UserType.Admin:
+                    result = UserType.Admin;
+                    break;
+                case (int)UserType.AdminStaff:
+                    result = UserType.AdminStaff;
+                    break;
+                case (int)UserType.Customer:
+                    result = UserType.Customer;
+                    break;
+                case (int)UserType.Staff:
+                    result = UserType.Staff;
+                    break;
+                case (int)UserType.Supplier:
+                    result = UserType.Supplier;
+                    break;
+                default:
+                    break;
+            }
 
             return result;
         }

@@ -53,14 +53,40 @@ namespace DataLayer
             return result;
         }
 
-        public DataSet GetUserByUserDetailId(int userDetails)
+        public DataSet GetUserByUserDetailId(int userDetailsId)
         {
-            return null;
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserDetailsRetrieve", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@userDetailsId", userDetailsId));
+
+            data.Load(command.ExecuteReader());
+            if (data?.Rows.Count == 0)
+                throw new Exception();
+            result.Tables.Add(data);
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
         }
 
         public void Setting(clsUserDetailsModel item)
         {
-
+            UpdateUser(item);
+            UpdateUserDetails(item);
         }
 
         public DataSet SignUp(clsUserDetailsModel item)
@@ -159,5 +185,66 @@ namespace DataLayer
             return result;
         }
 
+        private void UpdateUser(clsUserDetailsModel item)
+        {
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserupdate", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@userId", item.iUserId));
+            command.Parameters.Add(new SqlParameter("@email", item.sUsername));
+            command.Parameters.Add(new SqlParameter("@password", item.sPassword));
+
+            command.ExecuteNonQuery();
+        }
+
+        private void UpdateUserDetails(clsUserDetailsModel item)
+        {
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserDetailsUpdate", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@userDetailsId", item.iUserDetailsId));
+            command.Parameters.Add(new SqlParameter("@userId", item.iUserId));
+            command.Parameters.Add(new SqlParameter("@userTypeId", (int)item.eUserType));
+            command.Parameters.Add(new SqlParameter("@status", item.bStatus));
+
+            command.Parameters.Add(new SqlParameter("@name", item.sName));
+            command.Parameters.Add(new SqlParameter("@surnmae", item.sSurname));
+            command.Parameters.Add(new SqlParameter("@address", item.sAddress));
+            command.Parameters.Add(new SqlParameter("@countryId", item.iCountryId));
+
+            command.Parameters.Add(new SqlParameter("@email", item.sEmail));
+            command.Parameters.Add(new SqlParameter("@fix", item.sFixLine));
+            command.Parameters.Add(new SqlParameter("@mobile", item.sMobile));
+
+            command.Parameters.Add(new SqlParameter("@company", item.sCompany));
+            command.Parameters.Add(new SqlParameter("@brn", item.sBRN));
+            command.Parameters.Add(new SqlParameter("@note", item.sNote));
+
+            command.Parameters.Add(new SqlParameter("@web", item.sWebsite));
+            command.Parameters.Add(new SqlParameter("@fax", item.sFax));
+
+            command.ExecuteNonQuery();
+
+            if (connection != null)
+                connection.Close();
+        }
     }
 }

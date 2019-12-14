@@ -4,9 +4,17 @@
     <div class="jumbotron">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Setting</h3>
+                <h3 class="panel-title">Details</h3>
             </div>
             <div class="panel-body">
+                <asp:Panel ID="pnlSuccess" Visible="false" runat="server">
+                    <div class="alert alert-success">
+                        <strong>Success!</strong>
+                        <asp:Label ID="Label1" runat="server" Text="Record updated successfully"></asp:Label>
+                    </div>
+                    <br />
+                </asp:Panel>
+                
                 <ul class="nav nav-tabs">
                     <li role="presentation" class="active"><a href="#">Details</a></li>
                 </ul>
@@ -16,26 +24,32 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Name</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox9" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtName" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                                 <label for="inputEmail3" class="col-sm-1 control-label">Surname</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox11" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtSurname" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Address</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox10" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtAddress" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Country</label>
                                 <div class="col-sm-11">
-                                    <asp:DropDownList ID="DropDownList3" CssClass="form-control" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="drpCountry" CssClass="form-control" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                         </div>
+                        <asp:Panel ID="pnlErrorDetails" Visible="false" runat="server">
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong>
+                                <asp:Label ID="lblErrorDetails" runat="server" Text="Label"></asp:Label>
+                            </div>
+                        </asp:Panel>
                     </div>
                 </div>
                 <ul class="nav nav-tabs">
@@ -47,20 +61,26 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Email</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox4" CssClass="form-control" TextMode="Email" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" CssClass="form-control" TextMode="Email" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Fix</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox1" CssClass="form-control" TextMode="Phone" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtFixLine" CssClass="form-control" TextMode="Phone" runat="server"></asp:TextBox>
                                 </div>
                                 <label for="inputEmail3" class="col-sm-1 control-label">Mobile</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox3" CssClass="form-control" TextMode="Phone" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtmobile" CssClass="form-control" TextMode="Phone" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
+                        <asp:Panel ID="pnlErrorContact" Visible="false" runat="server">
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong>
+                                <asp:Label ID="lblErrorContact" runat="server" Text="Label"></asp:Label>
+                            </div>
+                        </asp:Panel>
                     </div>
                 </div>
                 <ul class="nav nav-tabs">
@@ -72,25 +92,32 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Company</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox5" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtCompany" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">BRN</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox6" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtBRN" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Note</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox2" CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtNote" CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
+                        <asp:Panel ID="pnlErrorCompany" Visible="false" runat="server">
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong>
+                                <asp:Label ID="lblErrorCompany" runat="server" Text="Label"></asp:Label>
+                            </div>
+                        </asp:Panel>
                     </div>
                 </div>
-                <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Update" />
+                <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click" CssClass="btn btn-primary" runat="server" Text="Update" />
+                
             </div>
         </div>
     </div>

@@ -50,6 +50,9 @@ namespace ViewModel
         SignupNameMissing = 7,
         SignupSurnameMissing = 8,
         SignupCompanyMissing = 9,
-        SignupRePasswordMissing = 10
+        SignupRePasswordMissing = 10,
+
+        InvalidSession = 11,
+        UpdateUserDEtailsFail = 12
     }
 }
