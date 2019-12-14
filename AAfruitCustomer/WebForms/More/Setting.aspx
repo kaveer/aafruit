@@ -14,26 +14,38 @@
                     <div class="panel-body">
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-1 control-label">Username</label>
+                                <label for="inputEmail3" class="col-sm-1 control-label">Email</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox12" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Password</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox7" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtPassword" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
                                 </div>
                                 <label for="inputEmail3" class="col-sm-1 control-label">re-enter</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox8" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtRePassword" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
+                        <asp:Panel ID="pnlErrorCredential" Visible="false" runat="server">
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong>
+                                <asp:Label ID="lblErrorDetails" runat="server" Text="Label"></asp:Label>
+                            </div>
+                        </asp:Panel>
+                         <asp:Panel ID="pnlSuccess" Visible="false" runat="server">
+                            <div class="alert alert-success">
+                                <strong>Error!</strong>
+                                <asp:Label ID="Label1" runat="server" Text="Credential successfully updated"></asp:Label>
+                            </div>
+                        </asp:Panel>
                     </div>
                 </div>
 
-                <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Update" />
+                <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click" CssClass="btn btn-primary" runat="server" Text="Update" />
             </div>
         </div>
     </div>
