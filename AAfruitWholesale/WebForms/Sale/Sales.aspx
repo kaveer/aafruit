@@ -13,13 +13,13 @@
                     <li role="presentation" class="active">
                         <asp:LinkButton ID="LinkButton1" runat="server">Processing</asp:LinkButton></li>
                     <li role="presentation" class="active">
-                        <asp:LinkButton ID="LinkButton2" runat="server">Await payment</asp:LinkButton></li>
-                    <li role="presentation" class="active">
-                        <asp:LinkButton ID="LinkButton3" runat="server">Dispatched</asp:LinkButton></li>
+                        <asp:LinkButton ID="LinkButton3" runat="server">Ready for delivery</asp:LinkButton></li>
                     <li role="presentation" class="active">
                         <asp:LinkButton ID="LinkButton4" runat="server">Delivered</asp:LinkButton></li>
                     <li role="presentation" class="active">
                         <asp:LinkButton ID="LinkButton5" runat="server">Returned/incomplete</asp:LinkButton></li>
+                     <li role="presentation" class="active">
+                        <asp:LinkButton ID="LinkButton2" runat="server">Hold</asp:LinkButton></li>
                 </ul>
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -30,10 +30,6 @@
                         <asp:Panel ID="pnlProcessing" runat="server">
                             <asp:GridView ID="GridView2" runat="server"></asp:GridView>
                             <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="Mark as await payment" />
-                        </asp:Panel>
-                        <asp:Panel ID="pnlAwaitPayment" runat="server">
-                            <asp:GridView ID="GridView3" runat="server"></asp:GridView>
-                            <asp:Button ID="Button3" CssClass="btn btn-primary" runat="server" Text="Dispatch" />
                         </asp:Panel>
                         <asp:Panel ID="pnlDispatched" runat="server">
                             <asp:GridView ID="GridView4" runat="server"></asp:GridView>
@@ -46,6 +42,9 @@
                             <asp:GridView ID="GridView6" runat="server"></asp:GridView>
                             <asp:Button ID="Button6" CssClass="btn btn-primary" runat="server" Text="Process" />
                             <asp:Button ID="Button5" CssClass="btn btn-primary" runat="server" Text="Mark as pending" />
+                        </asp:Panel>
+                          <asp:Panel ID="pnlHold" runat="server">
+                            <asp:GridView ID="GridView3" runat="server"></asp:GridView>
                         </asp:Panel>
                     </div>
                 </div>

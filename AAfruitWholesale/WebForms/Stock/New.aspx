@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-1 control-label">Added</label>
+                                <label for="inputEmail3" class="col-sm-1 control-label">Quantity</label>
                                 <div class="col-sm-6">
                                     <asp:TextBox ID="TextBox4" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                                 </div>

@@ -10,7 +10,6 @@
                 <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                 <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Add" />
                 <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="Edit" />
-                <asp:Button ID="Button3" CssClass="btn btn-primary" runat="server" Text="Configure" />
             </div>
         </div>
     </div>

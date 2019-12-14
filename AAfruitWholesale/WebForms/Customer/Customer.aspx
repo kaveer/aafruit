@@ -8,6 +8,7 @@
             <div class="panel-body">
                 <asp:GridView ID="GridView1" runat="server"></asp:GridView>
                 <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Delete" />
+                <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="Suspend" />
             </div>
         </div>
     </div>

@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-1 control-label">Amount</label>
+                                <label for="inputEmail3" class="col-sm-1 control-label">Quantity</label>
                                 <div class="col-sm-11">
                                     <asp:TextBox ID="TextBox3" CssClass="form-control" TextMode="SingleLine" ReadOnly="true" runat="server"></asp:TextBox>
                                 </div>

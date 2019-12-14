@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-1 control-label">Available</label>
                         <div class="col-sm-6">
-                            <asp:TextBox ID="TextBox2" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TextBox2" CssClass="form-control" ReadOnly="true" TextMode="Number" runat="server"></asp:TextBox>
                         </div>
                         <label for="inputEmail3" class="col-sm-1 control-label">Unit</label>
                         <div class="col-sm-4">
