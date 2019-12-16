@@ -33,7 +33,8 @@
                     discountPercentage.value = null;
                     discountTotalPrice.value = null;
                 }
-               
+
+                document.getElementById('<%= txtDiscount.ClientID %>').value = discountPercentage.value;
 
             } else {
                 alert("Please enter quantity")
@@ -62,13 +63,13 @@
                                 </div>
                                 <label for="inputEmail3" class="col-sm-1 control-label">Available</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="txtAvailable" CssClass="form-control" TextMode="SingleLine" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtAvailable" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Unit price</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="txtUnitPrice" CssClass="form-control" TextMode="SingleLine" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtUnitPrice" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -90,21 +91,33 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Total price</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="txtTotalPrice" CssClass="form-control" TextMode="Number" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtTotalPrice" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Discount</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="txtDiscount" CssClass="form-control" TextMode="SingleLine" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtDiscount" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
 
                                 </div>
                                 <label for="inputEmail3" class="col-sm-1 control-label">Discount price</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="txtDiscountPrice" CssClass="form-control" TextMode="Number" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtDiscountPrice" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
+                        <asp:Panel ID="pnlError" Visible="false" runat="server">
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong>
+                                <asp:Label ID="lblErrorDetails" runat="server" Text="Label"></asp:Label>
+                            </div>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlSuccess" Visible="false" runat="server">
+                            <div class="alert alert-success">
+                                <strong>Success!</strong>
+                                <asp:Label ID="Label1" runat="server" Text="Order placed successfully"></asp:Label>
+                            </div>
+                        </asp:Panel>
                     </div>
                 </div>
                 <asp:Button ID="btnOrder" OnClick="btnOrder_Click" CssClass="btn btn-primary" runat="server" Text="Place order" />

@@ -24,9 +24,10 @@ namespace ViewModel
         Pending = 1,
         Processing = 2,
         AwaitPayment = 3,
-        Dispatched = 4,
+        ReadyForDelivery = 4,
         Delivered = 5,
-        Returned = 6
+        Returned = 6,
+        Hold = 7
     }
 
     public enum MeasurementType

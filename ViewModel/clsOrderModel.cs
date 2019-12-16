@@ -14,6 +14,7 @@ namespace ViewModel
         public clsFruitModel objFruit { get; set; }
         public DateTime dRequestedDate { get; set; }
         public DateTime dDeadline { get; set; }
+        public decimal deQuantity { get; set; }
         public decimal deTotalPrice { get; set; }
         public bool bHasDiscount { get; set; }
         public string sDiscount { get; set; }

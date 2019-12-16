@@ -14,6 +14,7 @@ namespace AAfruitCustomer.WebForms.Main
     {
         clsUserDetailsModel sessionData = new clsUserDetailsModel();
         clsUserDetailsModel userDetails = new clsUserDetailsModel();
+        clsFruitModel fruit = new clsFruitModel();
 
         clsCustomer BusinessLayer = new clsCustomer();
         clsMaster master = new clsMaster();
@@ -36,7 +37,6 @@ namespace AAfruitCustomer.WebForms.Main
                 if (!IsPostBack)
                 {
                     List<clsFruitModel> fruits = new List<clsFruitModel>();
-
                     fruits = master.RetrieveFruits();
 
                     foreach (var item in fruits)
@@ -47,6 +47,8 @@ namespace AAfruitCustomer.WebForms.Main
                 }
 
                 LoadFruitByFruitId(Convert.ToInt32(drpFruit.SelectedValue));
+                AddControlAttribute();
+
             }
             catch (Exception)
             {
@@ -54,14 +56,71 @@ namespace AAfruitCustomer.WebForms.Main
             }
         }
 
+
+
         protected void btnOrder_Click(object sender, EventArgs e)
         {
+            try
+            {
+                clsOrderModel order = new clsOrderModel()
+                {
+                    iOrderId = 0,
+                    eOrderType = OrderType.Pending,
+                    objUserDetails = new clsUserDetailsModel()
+                    {
+                        iUserId = userDetails.iUserId,
+                        iUserDetailsId = userDetails.iUserDetailsId
+                    },
+                    objFruit = new clsFruitModel()
+                    {
+                        iFruitId = fruit.iFruitId,
+                        bStatus = fruit.bStatus,
+                        deQuantity = fruit.deQuantity,
+                        deUnitPrice = fruit.deUnitPrice,
+                        eMeasurement = fruit.eMeasurement,
+                        sDescription = fruit.sDescription,
+                        sFruitName = fruit.sFruitName
+                    },
+                    bStatus = true,
+                    deQuantity = string.IsNullOrWhiteSpace(txtQuantity.Text) ? 0 : Convert.ToDecimal(txtQuantity.Text),
+                    bHasDiscount = string.IsNullOrWhiteSpace(txtDiscountPrice.Text) ? false : true,
+                    dDeadline = GetValidDate(txtDeadLine.Text),
+                    dRequestedDate = GetValidDate(txtRequestedOn.Text),
+                    deTotalPrice = string.IsNullOrWhiteSpace(txtTotalPrice.Text) ? 0 : Convert.ToDecimal(txtTotalPrice.Text),
+                    deTotalPriceAfterDiscount = string.IsNullOrWhiteSpace(txtDiscountPrice.Text) ? 0 : Convert.ToDecimal(txtDiscountPrice.Text),
+                    sDiscount = txtDiscount.Text
+                };
 
+                BusinessLayer.PlaceOrder(order);
+
+                pnlError.Visible = false;
+                pnlSuccess.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                pnlSuccess.Visible = false;
+                pnlError.Visible = true;
+                lblErrorDetails.Text = ex.Message;
+            }
+
+        }
+
+        private DateTime GetValidDate(string date)
+        {
+            DateTime now = DateTime.Now;
+            DateTime result = DateTime.Now;
+
+            if (string.IsNullOrWhiteSpace(date))
+                return result = now.AddYears(-5);
+
+            if (!DateTime.TryParse(date, out result))
+                return result = now.AddYears(-5);
+
+            return result;
         }
 
         private void LoadFruitByFruitId(int fruitId)
         {
-            clsFruitModel fruit = new clsFruitModel();
             List<clsDiscountModel> discount = new List<clsDiscountModel>();
 
             fruit = BusinessLayer.GetFruitByFruitId(fruitId);
@@ -76,6 +135,14 @@ namespace AAfruitCustomer.WebForms.Main
             hidDiscount.Value = JsonConvert.SerializeObject(discount);
         }
 
-       
+        private void AddControlAttribute()
+        {
+            txtDiscount.Attributes.Add("readonly", "readonly");
+            txtDiscountPrice.Attributes.Add("readonly", "readonly");
+            txtTotalPrice.Attributes.Add("readonly", "readonly");
+            txtUnitPrice.Attributes.Add("readonly", "readonly");
+            txtAvailable.Attributes.Add("readonly", "readonly");
+        }
+
     }
 }
