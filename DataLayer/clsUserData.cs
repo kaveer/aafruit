@@ -83,6 +83,36 @@ namespace DataLayer
             return result;
         }
 
+        public DataSet GetFruitByFruitId(int fruitId)
+        {
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblFruitGetByFruitId", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@fruitId", fruitId));
+
+            data.Load(command.ExecuteReader());
+            if (data?.Rows.Count == 0)
+                throw new Exception();
+            result.Tables.Add(data);
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
+        }
+
         public void Setting(clsUserDetailsModel item)
         {
             UpdateUser(item);

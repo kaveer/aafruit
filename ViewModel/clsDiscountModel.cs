@@ -10,6 +10,7 @@ namespace ViewModel
     {
         public int iDiscountId { get; set; }
         public int iValue { get; set; }
-        public int iPriceRange { get; set; }
+        public decimal dePriceRange { get; set; }
+        public decimal dePriceRangeMax { get; set; }
     }
 }

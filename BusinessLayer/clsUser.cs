@@ -69,7 +69,33 @@ namespace BusinessLayer
             return result;
         }
 
-        
+        public clsFruitModel GetFruitByFruitId(int fruitId)
+        {
+            clsFruitModel result = new clsFruitModel();
+
+            DataSet data = new DataSet();
+            if (fruitId == 0)
+                throw new Exception();
+
+            data = dataLayer.GetFruitByFruitId(fruitId);
+            if (data?.Tables.Count == 0 || data?.Tables[0]?.Rows.Count == 0)
+                throw new Exception();
+
+            result = new clsFruitModel()
+            {
+                iFruitId = Convert.ToInt32(data.Tables[0].Rows[0][0]),
+                sFruitName = data.Tables[0].Rows[0][1].ToString(),
+                sDescription = data.Tables[0].Rows[0][2].ToString(),
+                deQuantity = Convert.ToDecimal(data.Tables[0].Rows[0][3].ToString()),
+                eMeasurement = GetMeasurementType(Convert.ToInt32(data.Tables[0].Rows[0][4].ToString())),
+                bStatus = Convert.ToBoolean(data.Tables[0].Rows[0][5].ToString()),
+                deUnitPrice = Convert.ToDecimal(data.Tables[0].Rows[0][6].ToString())
+            };
+
+            return result;
+        }
+
+       
 
         public void Setting(clsUserDetailsModel item)
         {
@@ -165,6 +191,34 @@ namespace BusinessLayer
                     break;
                 case (int)UserType.Supplier:
                     result = UserType.Supplier;
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
+
+        private MeasurementType GetMeasurementType(int measurementId)
+        {
+            MeasurementType result = new MeasurementType();
+
+            switch (measurementId)
+            {
+                case (int)MeasurementType.Gram:
+                    result = MeasurementType.Gram;
+                    break;
+                case (int)MeasurementType.Dekagram:
+                    result = MeasurementType.Dekagram;
+                    break;
+                case (int)MeasurementType.Hectogram:
+                    result = MeasurementType.Hectogram;
+                    break;
+                case (int)MeasurementType.Kilogram:
+                    result = MeasurementType.Kilogram;
+                    break;
+                case (int)MeasurementType.Ton:
+                    result = MeasurementType.Ton;
                     break;
                 default:
                     break;

@@ -37,5 +37,58 @@ namespace BusinessLayer
 
             return result;
         }
+
+        public List<clsDiscountModel> RetrieveDiscount()
+        {
+            List<clsDiscountModel> result = new List<clsDiscountModel>();
+            DataSet dataSet = new DataSet();
+
+            dataSet = masterData.RetrieveDiscount();
+            if (dataSet?.Tables?.Count == 0 || dataSet?.Tables[0].Rows.Count == 0)
+                throw new Exception(Convert.ToString((int)ErrorStatus.LoadDiscountMasterDataFail));
+
+            if (dataSet?.Tables[0]?.Rows.Count > 0)
+            {
+                foreach (DataRow item in dataSet.Tables[0].Rows)
+                {
+                    clsDiscountModel discount = new clsDiscountModel()
+                    {
+                        iDiscountId = Convert.ToInt32(item[0]),
+                        iValue = Convert.ToInt32(item[1]),
+                        dePriceRange = Convert.ToInt32(item[2]),
+                        dePriceRangeMax = Convert.ToInt32(item[3])
+
+                    };
+                    result.Add(discount);
+                }
+            }
+
+            return result;
+        }
+
+        public List<clsFruitModel> RetrieveFruits()
+        {
+            List<clsFruitModel> result = new List<clsFruitModel>();
+            DataSet dataSet = new DataSet();
+
+            dataSet = masterData.RetrieveFruits();
+            if (dataSet?.Tables?.Count == 0 || dataSet?.Tables[0].Rows.Count == 0)
+                throw new Exception(Convert.ToString((int)ErrorStatus.LoadDiscountMasterDataFail));
+
+            if (dataSet?.Tables[0]?.Rows.Count > 0)
+            {
+                foreach (DataRow item in dataSet.Tables[0].Rows)
+                {
+                    clsFruitModel discount = new clsFruitModel()
+                    {
+                        iFruitId = Convert.ToInt32(item[0]),
+                        sFruitName = item[1].ToString(),
+                    };
+                    result.Add(discount);
+                }
+            }
+
+            return result;
+        }
     }
 }
