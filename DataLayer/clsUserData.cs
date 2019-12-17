@@ -140,7 +140,33 @@ namespace DataLayer
 
         public DataSet ViewOrder(bool isStaff, int customerId, OrderType orderType)
         {
-            return null;
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblOrderRetrieve", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@isStaff", isStaff));
+            command.Parameters.Add(new SqlParameter("@userDetailsId", customerId));
+            command.Parameters.Add(new SqlParameter("@orderType", (int)orderType));
+
+            data.Load(command.ExecuteReader());
+           
+            result.Tables.Add(data);
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
         }
 
         private DataTable SaveUserData(clsUserDetailsModel item)

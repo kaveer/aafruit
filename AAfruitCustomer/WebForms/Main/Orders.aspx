@@ -1,6 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Orders.aspx.cs" Inherits="AAfruitCustomer.WebForms.Main.Orders" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        .table-condensed tr th {
+            border: 0px solid #6e7bd9;
+            color: white;
+            background-color: #6e7bd9;
+        }
+
+        .table-condensed, .table-condensed tr td {
+            border: 0px solid #000;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f7ff
+        }
+
+        tr:nth-child(odd) {
+            background: #fff;
+        }
+    </style>
+
     <div class="jumbotron">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -9,37 +29,28 @@
             <div class="panel-body">
                 <ul class="nav nav-tabs">
                     <li role="presentation" class="active">
-                        <asp:LinkButton ID="LinkButton6" runat="server">Pending</asp:LinkButton></li>
+                        <asp:LinkButton ID="lkPending" OnClick="lkPending_Click" runat="server">Pending</asp:LinkButton></li>
                     <li role="presentation" class="active">
-                        <asp:LinkButton ID="LinkButton1" runat="server">Processing</asp:LinkButton></li>
+                        <asp:LinkButton ID="lkProcessing" OnClick="lkProcessing_Click" runat="server">Processing</asp:LinkButton></li>
                     <li role="presentation" class="active">
-                        <asp:LinkButton ID="LinkButton2" runat="server">Await payment</asp:LinkButton></li>
+                        <asp:LinkButton ID="lkReadyForDelivery" OnClick="lkReadyForDelivery_Click" runat="server">Ready to deliver</asp:LinkButton></li>
                     <li role="presentation" class="active">
-                        <asp:LinkButton ID="LinkButton3" runat="server">Dispatched</asp:LinkButton></li>
+                        <asp:LinkButton ID="lkDelivery" OnClick="lkDelivery_Click" runat="server">Delivered</asp:LinkButton></li>
                     <li role="presentation" class="active">
-                        <asp:LinkButton ID="LinkButton4" runat="server">Delivered</asp:LinkButton></li>
+                        <asp:LinkButton ID="lkReturned" OnClick="lkReturned_Click" runat="server">Returned/incomplete</asp:LinkButton></li>
                     <li role="presentation" class="active">
-                        <asp:LinkButton ID="LinkButton5" runat="server">Returned/incomplete</asp:LinkButton></li>
+                        <asp:LinkButton ID="lkHold" OnClick="lkHold_Click" runat="server">Hold</asp:LinkButton></li>
                 </ul>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <asp:Panel ID="pnlPending" runat="server">
-                            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-                        </asp:Panel>
-                        <asp:Panel ID="pnlProcessing" runat="server">
-                            <asp:GridView ID="GridView2" runat="server"></asp:GridView>
-                        </asp:Panel>
-                        <asp:Panel ID="pnlAwaitPayment" runat="server">
-                            <asp:GridView ID="GridView3" runat="server"></asp:GridView>
-                        </asp:Panel>
-                        <asp:Panel ID="pnlDispatched" runat="server">
-                            <asp:GridView ID="GridView4" runat="server"></asp:GridView>
-                        </asp:Panel>
-                        <asp:Panel ID="pnlDelivered" runat="server">
-                            <asp:GridView ID="GridView5" runat="server"></asp:GridView>
-                        </asp:Panel>
-                        <asp:Panel ID="pnlReturned" runat="server">
-                            <asp:GridView ID="GridView6" runat="server"></asp:GridView>
+                        <asp:Panel ID="pnlGrid" runat="server">
+                            <asp:GridView 
+                                ID="grdOrder" 
+                                UseAccessibleHeader="true" 
+                                CssClass="table table-condensed table-hover" 
+                                runat="server">
+
+                            </asp:GridView>
                         </asp:Panel>
                     </div>
                 </div>
