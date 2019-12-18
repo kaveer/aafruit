@@ -143,12 +143,12 @@ namespace AAfruitCustomer.WebForms.Main
             table.Columns.Add("OrderId", typeof(int));
             table.Columns.Add("Name", typeof(string));
             table.Columns.Add("Company", typeof(string));
-            table.Columns.Add("Requested Date", typeof(string));
+            table.Columns.Add("Requested", typeof(string));
             table.Columns.Add("Deadline", typeof(string));
             table.Columns.Add("Quantity", typeof(decimal));
             table.Columns.Add("Total price", typeof(decimal));
             table.Columns.Add("Discount", typeof(string));
-            table.Columns.Add("Total Discount price", typeof(decimal));
+            table.Columns.Add("Discount price", typeof(decimal));
             table.Columns.Add("Fruit", typeof(string));
 
             if (customerOrder.Count > 0)

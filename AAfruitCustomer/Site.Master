@@ -78,7 +78,7 @@
                                     <li>
                                         <asp:HyperLink ID="HyperLink10" NavigateUrl="~/WebForms/More/Setting.aspx" runat="server">Setting</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Login.aspx" runat="server">Log out</asp:HyperLink></li>
+                                        <asp:LinkButton ID="lkLogout" OnClick="lkLogout_Click" runat="server">Logout</asp:LinkButton></li>
                                 </ul>
                             </li>
                         </ul>

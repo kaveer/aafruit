@@ -13,5 +13,11 @@ namespace AAfruitCustomer
         {
 
         }
+
+        protected void lkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx", false);
+        }
     }
 }
