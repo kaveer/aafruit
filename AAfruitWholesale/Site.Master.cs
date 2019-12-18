@@ -46,5 +46,11 @@ namespace AAfruitWholesale
                 Response.Redirect(string.Format("~/Error.aspx?stat={0}", (int)ErrorStatus.InvalidSession));
             }
         }
+
+        protected void lkLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx", false);
+        }
     }
 }
