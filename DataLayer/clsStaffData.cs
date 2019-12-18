@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +12,14 @@ namespace DataLayer
 {
     public class clsStaffData:clsUserData
     {
+        private readonly string connectionString;
+        private SqlConnection connection = new SqlConnection();
+
+        public clsStaffData()
+        {
+            connectionString = ConfigurationManager.AppSettings["appctxt"];
+        }
+
         public void AddUser(clsUserDetailsModel item)
         {
 
@@ -27,7 +37,31 @@ namespace DataLayer
 
         public DataSet RetrieveUser(UserType item)
         {
-            return null;
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserDetailsRetrieveByUserType", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@userType", (int) item));
+
+            data.Load(command.ExecuteReader());
+            
+            result.Tables.Add(data);
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
         }
 
         public void DeleteCustomer(int customerId)
