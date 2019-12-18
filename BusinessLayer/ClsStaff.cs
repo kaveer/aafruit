@@ -65,14 +65,14 @@ namespace BusinessLayer
             return result;
         }
 
-        public void DeleteCustomer(int customerId)
+        public void DeleteCustomer(int userDetailsId)
         {
-
+            dataLayer.DeleteCustomer(userDetailsId);
         }
 
         public void UpdateOrderStatus(int orderId, OrderType item)
         {
-
+            dataLayer.UpdateOrderStatus(orderId, item);
         }
 
         public List<clsOrderModel> SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)

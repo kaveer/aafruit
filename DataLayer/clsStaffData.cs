@@ -64,14 +64,37 @@ namespace DataLayer
             return result;
         }
 
-        public void DeleteCustomer(int customerId)
+        public void DeleteCustomer(int userDetailsId)
         {
+            DataSet data = new DataSet();
+            int userId = 0;
 
+            data = GetUserByUserDetailId(userDetailsId);
+            userId = Convert.ToInt32(data.Tables[0].Rows[0][0]);
+
+            DeleteUser(userId);
+            DeleteUserDetails(userDetailsId);
+            DeleteOrders(userDetailsId);
         }
 
         public void UpdateOrderStatus(int orderId, OrderType item)
         {
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
 
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblOrderUpdateStatusById", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@orderId", orderId));
+            command.Parameters.Add(new SqlParameter("@orderType", (int)item));
+
+            command.ExecuteNonQuery();
         }
 
         public DataSet SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
@@ -82,6 +105,63 @@ namespace DataLayer
         public DataSet PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
             return null;
+        }
+
+        private void DeleteOrders(int userDetailsId)
+        {
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblOrderDelete", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@userDertailsId", userDetailsId));
+
+            command.ExecuteNonQuery();
+        }
+
+        private void DeleteUserDetails(int userDetailsId)
+        {
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserDetailsDelete", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@userDertailsId", userDetailsId));
+
+            command.ExecuteNonQuery();
+        }
+
+        private void DeleteUser(int userId)
+        {
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserDelete", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@userId", userId));
+
+            command.ExecuteNonQuery();
         }
     }
 }

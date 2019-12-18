@@ -37,14 +37,7 @@ namespace AAfruitWholesale.WebForms.Customer
                     throw new Exception();
 
                 if (!IsPostBack)
-                {
-                    customers = new List<clsUserDetailsModel>();
-                    customers = BusinessLayer.RetrieveUser(UserType.Customer);
-
-                    dataTable = GenerateCustomCol(customers);
-                    grdCustomer.DataSource = dataTable;
-                    grdCustomer.DataBind();
-                }
+                    RetrieveAndBindCustomer();
             }
             catch (Exception ex)
             {
@@ -52,14 +45,83 @@ namespace AAfruitWholesale.WebForms.Customer
             }
         }
 
+       
+
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                pnlError.Visible = false;
+                selectedUserDetailsId = grdCustomer.SelectedRow == null ? 0 : Convert.ToInt32(grdCustomer.SelectedRow.Cells[0].Text);
 
+                if (selectedUserDetailsId == 0)
+                    throw new Exception();
+
+                BusinessLayer.DeleteCustomer(selectedUserDetailsId);
+                RetrieveAndBindCustomer();
+            }
+            catch (Exception)
+            {
+                pnlError.Visible = true;
+            }
+            
         }
 
         protected void btnSuspend_Click(object sender, EventArgs e)
         {
+            try
+            {
+                clsUserDetailsModel seletedUserDetails = new clsUserDetailsModel();
+                List<clsOrderModel> customerOrders = new List<clsOrderModel>();
+                bool newStatus;
+                OrderType newOrderType;
 
+                pnlError.Visible = false;
+                selectedUserDetailsId = grdCustomer.SelectedRow == null ? 0 : Convert.ToInt32(grdCustomer.SelectedRow.Cells[0].Text);
+
+                if (selectedUserDetailsId == 0)
+                    throw new Exception();
+
+                seletedUserDetails = BusinessLayer.GetUserByUserDetailId(selectedUserDetailsId);
+
+                if (seletedUserDetails.bStatus)
+                {
+                    newStatus = false;
+                    newOrderType = OrderType.Hold;
+                }
+                else
+                {
+                    newStatus = true;
+                    newOrderType = OrderType.Pending;
+                }
+
+                foreach (OrderType item in (OrderType[])Enum.GetValues(typeof(OrderType)))
+                {
+                    var orderLoop = item;
+
+                    List<clsOrderModel> orders = new List<clsOrderModel>();
+                    orders = BusinessLayer.ViewOrder(false, selectedUserDetailsId, orderLoop);
+                    if (orders.Count > 0)
+                    {
+                        foreach (var orderItem in orders)
+                            customerOrders.Add(orderItem);
+                    }
+
+                }
+
+                seletedUserDetails.bStatus = newStatus;
+                BusinessLayer.Setting(seletedUserDetails);
+
+                foreach (var item in customerOrders)
+                    BusinessLayer.UpdateOrderStatus(item.iOrderId, newOrderType);
+
+                RetrieveAndBindCustomer();
+            }
+            catch (Exception)
+            {
+                pnlError.Visible = true;
+            }
+            
         }
 
         private DataTable GenerateCustomCol(List<clsUserDetailsModel> customers)
@@ -92,7 +154,7 @@ namespace AAfruitWholesale.WebForms.Customer
                         item.sBRN,
                         item.sMobile,
                         item.sFax,
-                        item.bStatus? "Active":"Suspended"
+                        item.bStatus ? "Active" : "Suspended"
                         );
             }
 
@@ -101,7 +163,7 @@ namespace AAfruitWholesale.WebForms.Customer
 
         protected void grdCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var t = grdCustomer.SelectedRow.Cells[0].Text;
+            selectedUserDetailsId = Convert.ToInt32(grdCustomer.SelectedRow.Cells[0].Text);
             foreach (GridViewRow row in grdCustomer.Rows)
             {
                 if (row.RowIndex == grdCustomer.SelectedIndex)
@@ -125,6 +187,16 @@ namespace AAfruitWholesale.WebForms.Customer
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdCustomer, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
             }
+        }
+
+        private void RetrieveAndBindCustomer()
+        {
+            customers = new List<clsUserDetailsModel>();
+            customers = BusinessLayer.RetrieveUser(UserType.Customer);
+
+            dataTable = GenerateCustomCol(customers);
+            grdCustomer.DataSource = dataTable;
+            grdCustomer.DataBind();
         }
     }
 }
