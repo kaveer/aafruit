@@ -45,6 +45,7 @@
     <Compile Include="clsDiscountModel.cs" />
     <Compile Include="clsEnumsModel.cs" />
     <Compile Include="clsFruitModel.cs" />
+    <Compile Include="clsMeasurementUnitModel.cs" />
     <Compile Include="clsOrderModel.cs" />
     <Compile Include="clsStockModel.cs" />
     <Compile Include="clsUserDetailsModel.cs" />

@@ -43,10 +43,6 @@ namespace ViewModel
     {
         LoginFail = 1,
         LoadCountryMasterDataFail = 2,
-        LoadDiscountMasterDataFail = 13,
-        LoadFruitMasterDataFail = 14,
-        LoadUserTypeMasterDataFail = 15,
-        AddUserFail = 16,
         SignUpFail = 3,
 
         SignupUsernameMissing = 4,
@@ -58,6 +54,21 @@ namespace ViewModel
         SignupRePasswordMissing = 10,
 
         InvalidSession = 11,
-        UpdateUserDEtailsFail = 12
+        UpdateUserDEtailsFail = 12,
+
+        LoadDiscountMasterDataFail = 13,
+        LoadFruitMasterDataFail = 14,
+        LoadUserTypeMasterDataFail = 15,
+        LoadMeasurementMasterDataFail = 16,
+        LoadSuppliersDataFail = 17,
+        AddUserFail = 18,
+
+        InventorySaveFail = 19,
+        InventoryInvalidModel = 20,
+        InventoryInvalidFruitName = 21,
+        InventoryInvalidQuantity = 22,
+        InventoryInvalidUnitPrice = 23,
+        InventorySupplierDetails = 24,
+        InventoryInvalidDeliveryDate = 25
     }
 }

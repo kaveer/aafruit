@@ -30,10 +30,17 @@ namespace DataLayer
             return null;
         }
 
-        public void UpsertInventory(clsFruitModel item)
+        public void UpsertInventory(StockSummaryModel item)
         {
+            DataSet fruit = new DataSet();
 
+            fruit = UpsertFruit(item.objFruit);
+            item.objFruit.iFruitId = Convert.ToInt32(fruit.Tables[0].Rows[0][0]);
+
+            UpsertStock(item);
         }
+
+       
 
         public DataSet RetrieveUser(UserType item)
         {
@@ -162,6 +169,69 @@ namespace DataLayer
             command.Parameters.Add(new SqlParameter("@userId", userId));
 
             command.ExecuteNonQuery();
+        }
+
+        private DataSet UpsertFruit(clsFruitModel item)
+        {
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblFruitUpsert", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@fruitId", item.iFruitId));
+            command.Parameters.Add(new SqlParameter("@name", item.sFruitName));
+            command.Parameters.Add(new SqlParameter("@des", item.sDescription));
+            command.Parameters.Add(new SqlParameter("@measurement", (int)item.eMeasurement));
+            command.Parameters.Add(new SqlParameter("@quantity", item.deQuantity));
+            command.Parameters.Add(new SqlParameter("@unitPrice", item.deUnitPrice));
+            command.Parameters.Add(new SqlParameter("@stat", item.bStatus));
+
+            data.Load(command.ExecuteReader());
+            if (data?.Rows.Count == 0)
+                throw new Exception();
+
+            result.Tables.Add(data);
+
+            return result;
+        }
+
+        private void UpsertStock(StockSummaryModel item)
+        {
+            foreach (var stock in item.lstStock)
+            {
+                if (string.IsNullOrWhiteSpace(connectionString))
+                    throw new Exception();
+
+                connection = new SqlConnection(connectionString);
+                connection.Open();
+                if (connection == null)
+                    throw new Exception();
+
+                SqlCommand command = new SqlCommand("tblSockUpsert", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                command.Parameters.Add(new SqlParameter("@stockid", stock.iStockId));
+                command.Parameters.Add(new SqlParameter("@userDetailsId", stock.objUserDetails.iUserDetailsId));
+                command.Parameters.Add(new SqlParameter("@fruitId", item.objFruit.iFruitId));
+                command.Parameters.Add(new SqlParameter("@status", stock.bStatus));
+                command.Parameters.Add(new SqlParameter("@DeliveryDate", stock.dDeliveryDate));
+                command.Parameters.Add(new SqlParameter("@note", stock.sNote));
+                command.Parameters.Add(new SqlParameter("@quantity", stock.deQuantityAdded));
+
+                command.ExecuteNonQuery();
+            }
+            
         }
     }
 }

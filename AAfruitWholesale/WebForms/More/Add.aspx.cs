@@ -131,24 +131,28 @@ namespace AAfruitWholesale.WebForms.More
 
         private void AssignValue()
         {
-            newUser.sUsername = txtEmail.Text.Trim();
-            newUser.sPassword = txtPassword.Text.Trim();
-            newUser.sReEnterPassword = txtReEnterPassword.Text.Trim();
-            newUser.eUserType = GetUserType(Convert.ToInt32(drpRole.SelectedValue));
+            newUser = new clsUserDetailsModel()
+            {
+                sUsername = txtEmail.Text.Trim(),
+                sPassword = txtPassword.Text.Trim(),
+                sReEnterPassword = txtReEnterPassword.Text.Trim(),
+                eUserType = GetUserType(Convert.ToInt32(drpRole.SelectedValue)),
+                bStatus = true,
 
-            newUser.sName = txtName.Text.Trim();
-            newUser.sSurname = txtSurname.Text.Trim();
-            newUser.sAddress = txtAddress.Text.Trim();
-            newUser.iCountryId = Convert.ToInt32(drpCountry.SelectedValue);
+                sName = txtName.Text.Trim(),
+                sSurname = txtSurname.Text.Trim(),
+                sAddress = txtAddress.Text.Trim(),
+                iCountryId = Convert.ToInt32(drpCountry.SelectedValue),
 
-            newUser.sEmail = txtEmailDetail.Text.Trim();
-            newUser.sFixLine = txtPhoneFix.Text.Trim();
-            newUser.sMobile = txtPhoneMobile.Text.Trim();
-            newUser.sFax = txtFax.Text.Trim();
+                sEmail = txtEmailDetail.Text.Trim(),
+                sFixLine = txtPhoneFix.Text.Trim(),
+                sMobile = txtPhoneMobile.Text.Trim(),
+                sFax = txtFax.Text.Trim(),
 
-            newUser.sCompany = txtCompany.Text.Trim();
-            newUser.sBRN = txtBRN.Text.Trim();
-            newUser.sNote = txtNote.Text.Trim();
+                sCompany = txtCompany.Text.Trim(),
+                sBRN = txtBRN.Text.Trim(),
+                sNote = txtNote.Text.Trim(),
+            };
         }
 
         private UserType GetUserType(int userTypeId)

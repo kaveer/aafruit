@@ -106,6 +106,36 @@ namespace DataLayer
             return result;
         }
 
+        public DataSet RetrieveMeasurementUnit()
+        {
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception(Convert.ToString((int)ErrorStatus.LoadMeasurementMasterDataFail));
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblMeasurementUnitRetrieve", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            data.Load(command.ExecuteReader());
+            if (data?.Rows.Count == 0)
+                throw new Exception(Convert.ToString((int)ErrorStatus.LoadMeasurementMasterDataFail));
+
+            result.Tables.Add(data);
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
+        }
+
         public DataSet RetrieveUserType()
         {
             DataSet result = new DataSet();

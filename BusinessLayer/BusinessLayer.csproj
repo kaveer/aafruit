@@ -45,6 +45,7 @@
     <Compile Include="clsMaster.cs" />
     <Compile Include="ClsStaff.cs" />
     <Compile Include="clsUser.cs" />
+    <Compile Include="Helper\clsCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

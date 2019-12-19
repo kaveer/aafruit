@@ -23,9 +23,10 @@ namespace BusinessLayer
             return null;
         }
 
-        public void UpsertInventory(clsFruitModel item)
+        public void UpsertInventory(StockSummaryModel item)
         {
-
+            if (IsInventoryModelValid(item))
+                dataLayer.UpsertInventory(item);
         }
 
         public List<clsUserDetailsModel> RetrieveUser(UserType userType)
@@ -113,6 +114,39 @@ namespace BusinessLayer
             return result;
         }
 
+        private bool IsInventoryModelValid(StockSummaryModel item)
+        {
+            bool result = true;
 
+            if (item.objFruit == null)
+                throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidModel));
+
+            if (item.lstStock == null || item.lstStock.Count == 0)
+                throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidModel));
+
+            if (string.IsNullOrWhiteSpace(item.objFruit.sFruitName))
+                throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidFruitName));
+
+            if (item.objFruit.deQuantity == 0)
+                throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidQuantity));
+
+            if (item.objFruit.deUnitPrice == 0)
+                throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidUnitPrice));
+
+
+            foreach (var stock in item.lstStock)
+            {
+                if (stock.objUserDetails == null)
+                    throw new FormatException(Convert.ToString((int)ErrorStatus.InventorySupplierDetails));
+
+                if (stock.objUserDetails.iUserDetailsId == 0)
+                    throw new FormatException(Convert.ToString((int)ErrorStatus.InventorySupplierDetails));
+
+                if (stock.dDeliveryDate < DateTime.Today)
+                    throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidDeliveryDate));
+            }
+
+            return result;
+        }
     }
 }

@@ -66,6 +66,31 @@ namespace BusinessLayer
             return result;
         }
 
+        public List<clsMeasurementUnitModel> RetrieveMeasurement()
+        {
+            List<clsMeasurementUnitModel> result = new List<clsMeasurementUnitModel>();
+            DataSet dataSet = new DataSet();
+
+            dataSet = masterData.RetrieveMeasurementUnit();
+            if (dataSet?.Tables?.Count == 0 || dataSet?.Tables[0].Rows.Count == 0)
+                throw new Exception(Convert.ToString((int)ErrorStatus.LoadDiscountMasterDataFail));
+
+            if (dataSet?.Tables[0]?.Rows.Count > 0)
+            {
+                foreach (DataRow item in dataSet.Tables[0].Rows)
+                {
+                    clsMeasurementUnitModel measurement = new clsMeasurementUnitModel()
+                    {
+                        iMeasurementId = Convert.ToInt32(item[0]),
+                        sMeasurement = item[1].ToString(),
+                    };
+                    result.Add(measurement);
+                }
+            }
+
+            return result;
+        }
+
         public List<clsUserTypeModel> RetrieveUserType()
         {
             List<clsUserTypeModel> result = new List<clsUserTypeModel>();
