@@ -59,6 +59,9 @@ namespace AAfruitCustomer.WebForms.Main
                 AssignValue(true);
                 BusinessLayer.Setting(userDetails);
 
+                pnlErrorCompany.Visible = false;
+                pnlErrorContact.Visible = false;
+                pnlErrorDetails.Visible = false;
                 pnlSuccess.Visible = true;
             }
             catch (FormatException ex)

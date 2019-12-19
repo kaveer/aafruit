@@ -14,7 +14,7 @@ namespace AAfruitCustomer.WebForms.More
         clsUserDetailsModel sessionData = new clsUserDetailsModel();
         clsUserDetailsModel userDetails = new clsUserDetailsModel();
 
-        clsCustomer BusinessLayer = new clsCustomer();
+        clsCustomer businessLayer = new clsCustomer();
         clsMaster master = new clsMaster();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace AAfruitCustomer.WebForms.More
                 if (sessionData == null || (sessionData.iUserId == 0 || sessionData.iUserDetailsId == 0))
                     throw new Exception();
 
-                userDetails = BusinessLayer.GetUserByUserDetailId(sessionData.iUserDetailsId);
+                userDetails = businessLayer.GetUserByUserDetailId(sessionData.iUserDetailsId);
                 if (userDetails.iUserId == 0 || userDetails.iUserDetailsId == 0)
                     throw new Exception();
 
@@ -48,7 +48,7 @@ namespace AAfruitCustomer.WebForms.More
             try
             {
                 AssignValue(true);
-                BusinessLayer.Setting(userDetails);
+                businessLayer.Setting(userDetails);
 
                 pnlSuccess.Visible = true;
                 pnlErrorCredential.Visible = false;
