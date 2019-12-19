@@ -105,5 +105,35 @@ namespace DataLayer
 
             return result;
         }
+
+        public DataSet RetrieveUserType()
+        {
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception(Convert.ToString((int)ErrorStatus.LoadUserTypeMasterDataFail));
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblUserTypeRetrieve", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            data.Load(command.ExecuteReader());
+            if (data?.Rows.Count == 0)
+                throw new Exception(Convert.ToString((int)ErrorStatus.LoadUserTypeMasterDataFail));
+
+            result.Tables.Add(data);
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
+        }
     }
 }

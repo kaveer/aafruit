@@ -15,7 +15,7 @@ namespace BusinessLayer
 
         public void AddUser(clsUserDetailsModel item)
         {
-
+            SignUp(item);
         }
 
         public List<clsFruitModel> ViewInventory()

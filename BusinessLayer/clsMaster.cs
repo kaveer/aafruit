@@ -66,6 +66,31 @@ namespace BusinessLayer
             return result;
         }
 
+        public List<clsUserTypeModel> RetrieveUserType()
+        {
+            List<clsUserTypeModel> result = new List<clsUserTypeModel>();
+            DataSet dataSet = new DataSet();
+
+            dataSet = masterData.RetrieveUserType();
+            if (dataSet?.Tables?.Count == 0 || dataSet?.Tables[0].Rows.Count == 0)
+                throw new Exception(Convert.ToString((int)ErrorStatus.LoadDiscountMasterDataFail));
+
+            if (dataSet?.Tables[0]?.Rows.Count > 0)
+            {
+                foreach (DataRow item in dataSet.Tables[0].Rows)
+                {
+                    clsUserTypeModel user = new clsUserTypeModel()
+                    {
+                        iUserTypeId = Convert.ToInt32(item[0]),
+                        sUserType = item[1].ToString(),
+                    };
+                    result.Add(user);
+                }
+            }
+
+            return result;
+        }
+
         public List<clsFruitModel> RetrieveFruits()
         {
             List<clsFruitModel> result = new List<clsFruitModel>();

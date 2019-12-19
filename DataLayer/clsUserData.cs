@@ -226,6 +226,8 @@ namespace DataLayer
             command.Parameters.Add(new SqlParameter("@email", item.sEmail));
             command.Parameters.Add(new SqlParameter("@fix", item.sFixLine));
             command.Parameters.Add(new SqlParameter("@mobile", item.sMobile));
+            command.Parameters.Add(new SqlParameter("@web", item.sWebsite));
+            command.Parameters.Add(new SqlParameter("@fax", item.sFax));
 
             command.Parameters.Add(new SqlParameter("@company", item.sCompany));
             command.Parameters.Add(new SqlParameter("@brn", item.sBRN));

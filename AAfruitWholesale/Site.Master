@@ -113,8 +113,6 @@
                                     <li>
                                         <asp:LinkButton ID="lkLogout" OnClick="lkLogout_Click" runat="server">Logout</asp:LinkButton></li>
                                     <li>
-                                        <asp:HyperLink ID="HyperLink4" runat="server">Log as customer</asp:HyperLink></li>
-                                    <li>
                                         <asp:HyperLink ID="HyperLink3" NavigateUrl="~/WebForms/More/Setting.aspx" runat="server">Settings</asp:HyperLink></li>
                                     <li role="separator" class="divider"></li>
                                     <li>

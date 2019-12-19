@@ -45,6 +45,8 @@ namespace ViewModel
         LoadCountryMasterDataFail = 2,
         LoadDiscountMasterDataFail = 13,
         LoadFruitMasterDataFail = 14,
+        LoadUserTypeMasterDataFail = 15,
+        AddUserFail = 16,
         SignUpFail = 3,
 
         SignupUsernameMissing = 4,
