@@ -207,31 +207,33 @@ namespace DataLayer
 
         private void UpsertStock(StockSummaryModel item)
         {
-            foreach (var stock in item.lstStock)
+            if (item.lstStock.Count > 0)
             {
-                if (string.IsNullOrWhiteSpace(connectionString))
-                    throw new Exception();
-
-                connection = new SqlConnection(connectionString);
-                connection.Open();
-                if (connection == null)
-                    throw new Exception();
-
-                SqlCommand command = new SqlCommand("tblSockUpsert", connection)
+                foreach (var stock in item.lstStock)
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
-                command.Parameters.Add(new SqlParameter("@stockid", stock.iStockId));
-                command.Parameters.Add(new SqlParameter("@userDetailsId", stock.objUserDetails.iUserDetailsId));
-                command.Parameters.Add(new SqlParameter("@fruitId", item.objFruit.iFruitId));
-                command.Parameters.Add(new SqlParameter("@status", stock.bStatus));
-                command.Parameters.Add(new SqlParameter("@DeliveryDate", stock.dDeliveryDate));
-                command.Parameters.Add(new SqlParameter("@note", stock.sNote));
-                command.Parameters.Add(new SqlParameter("@quantity", stock.deQuantityAdded));
+                    if (string.IsNullOrWhiteSpace(connectionString))
+                        throw new Exception();
 
-                command.ExecuteNonQuery();
+                    connection = new SqlConnection(connectionString);
+                    connection.Open();
+                    if (connection == null)
+                        throw new Exception();
+
+                    SqlCommand command = new SqlCommand("tblSockUpsert", connection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    command.Parameters.Add(new SqlParameter("@stockid", stock.iStockId));
+                    command.Parameters.Add(new SqlParameter("@userDetailsId", stock.objUserDetails.iUserDetailsId));
+                    command.Parameters.Add(new SqlParameter("@fruitId", item.objFruit.iFruitId));
+                    command.Parameters.Add(new SqlParameter("@status", stock.bStatus));
+                    command.Parameters.Add(new SqlParameter("@DeliveryDate", stock.dDeliveryDate));
+                    command.Parameters.Add(new SqlParameter("@note", stock.sNote));
+                    command.Parameters.Add(new SqlParameter("@quantity", stock.deQuantityAdded));
+
+                    command.ExecuteNonQuery();
+                }
             }
-            
         }
     }
 }

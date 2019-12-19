@@ -11,6 +11,7 @@ namespace AAfruitWholesale
 {
     public partial class SiteMaster : MasterPage
     {
+        public string crumb;
         clsUserDetailsModel sessionData = new clsUserDetailsModel();
         clsUserDetailsModel userDetails = new clsUserDetailsModel();
 

@@ -38,10 +38,6 @@ namespace AAfruitCustomer.WebForms.Main
                 {
                     LoadOrderType((int)OrderType.Pending);
                 }
-
-                
-
-
             }
             catch (Exception)
             {
