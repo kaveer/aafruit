@@ -2,9 +2,6 @@
 using BusinessLayer.Helper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using ViewModel;
 
@@ -150,6 +147,7 @@ namespace AAfruitWholesale.WebForms.Stock
             }
             catch (Exception ex)
             {
+                Response.Redirect(string.Format("~/Error.aspx?stat={0}", (int)ErrorStatus.InventoryConfigurationFail));
             }
         }
 

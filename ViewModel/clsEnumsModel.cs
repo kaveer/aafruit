@@ -69,6 +69,8 @@ namespace ViewModel
         InventoryInvalidQuantity = 22,
         InventoryInvalidUnitPrice = 23,
         InventorySupplierDetails = 24,
-        InventoryInvalidDeliveryDate = 25
+        InventoryInvalidDeliveryDate = 25,
+        InventoryConfigurationFail = 26,
+        AddSupplierFail = 27
     }
 }

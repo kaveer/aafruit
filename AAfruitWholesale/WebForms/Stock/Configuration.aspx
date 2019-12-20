@@ -43,18 +43,18 @@
                         </div>
                     </div>
                 </div>
-                 <asp:Panel ID="pnlError" Visible="false" runat="server">
-                            <div class="alert alert-danger">
-                                <strong>Error!</strong>
-                                <asp:Label ID="lblErrorDetails" runat="server" Text="Label"></asp:Label>
-                            </div>
-                        </asp:Panel>
-                        <asp:Panel ID="pnlSuccess" Visible="false" runat="server">
-                            <div class="alert alert-success">
-                                <strong>Success!</strong>
-                                <asp:Label ID="Label1" runat="server" Text="Inventory update successfully"></asp:Label>
-                            </div>
-                        </asp:Panel>
+                <asp:Panel ID="pnlError" Visible="false" runat="server">
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong>
+                        <asp:Label ID="lblErrorDetails" runat="server" Text="Label"></asp:Label>
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="pnlSuccess" Visible="false" runat="server">
+                    <div class="alert alert-success">
+                        <strong>Success!</strong>
+                        <asp:Label ID="Label1" runat="server" Text="Inventory update successfully"></asp:Label>
+                    </div>
+                </asp:Panel>
                 <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click" CssClass="btn btn-primary" runat="server" Text="Update" />
             </div>
         </div>
