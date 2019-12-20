@@ -121,7 +121,7 @@ namespace BusinessLayer
             if (item.objFruit == null)
                 throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidModel));
 
-            if (item.lstStock == null || item.lstStock.Count == 0)
+            if (item.lstStock == null)
                 throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidModel));
 
             if (string.IsNullOrWhiteSpace(item.objFruit.sFruitName))

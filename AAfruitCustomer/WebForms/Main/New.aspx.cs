@@ -44,6 +44,8 @@ namespace AAfruitCustomer.WebForms.Main
                         ListItem list = new ListItem(item.sFruitName, item.iFruitId.ToString(), true);
                         drpFruit.Items.Add(list);
                     }
+
+                    drpFruit.SelectedIndex = 1;
                 }
 
                 LoadFruitByFruitId(Convert.ToInt32(drpFruit.SelectedValue));

@@ -13,57 +13,102 @@ namespace AAfruitWholesale.WebForms.Stock {
     public partial class Configuration {
         
         /// <summary>
-        /// DropDownList1 control.
+        /// drpFruit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList drpFruit;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtname;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// txtQuatity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.TextBox txtQuatity;
         
         /// <summary>
-        /// TextBox3 control.
+        /// drpMeasureUnit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.DropDownList drpMeasureUnit;
         
         /// <summary>
-        /// Button1 control.
+        /// txtUnitPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox txtUnitPrice;
+        
+        /// <summary>
+        /// pnlError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlError;
+        
+        /// <summary>
+        /// lblErrorDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorDetails;
+        
+        /// <summary>
+        /// pnlSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSuccess;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }
