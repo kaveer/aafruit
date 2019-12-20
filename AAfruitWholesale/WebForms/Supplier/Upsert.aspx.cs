@@ -13,6 +13,7 @@ namespace AAfruitWholesale.WebForms.Supplier
     {
         clsUserDetailsModel sessionData = new clsUserDetailsModel();
         clsUserDetailsModel userDetails = new clsUserDetailsModel();
+        int supplierId = 0;
 
         ClsStaff businessLayer = new ClsStaff();
         clsMaster master = new clsMaster();
@@ -32,6 +33,8 @@ namespace AAfruitWholesale.WebForms.Supplier
                 if (userDetails.iUserId == 0 || userDetails.iUserDetailsId == 0)
                     throw new Exception();
 
+                supplierId = Request.QueryString["suppid"] == null ? 0 : Convert.ToInt32(Request.QueryString["suppid"]);
+
                 if (!IsPostBack)
                 {
                     List<clsCountryModel> countries = new List<clsCountryModel>();
@@ -43,9 +46,14 @@ namespace AAfruitWholesale.WebForms.Supplier
                         drpCountry.Items.Add(list);
                     }
 
-                    drpCountry.SelectedIndex = 1;
-                }
+                    drpCountry.SelectedIndex = 0;
 
+                    if (supplierId != 0)
+                    {
+                        btnAdd.Text = "Update";
+                        RetrieveSupplier();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -64,6 +72,8 @@ namespace AAfruitWholesale.WebForms.Supplier
         {
             try
             {
+                clsUserDetailsModel result = new clsUserDetailsModel();
+
                 clsUserDetailsModel data = new clsUserDetailsModel()
                 {
                     iUserId = 0,
@@ -91,11 +101,21 @@ namespace AAfruitWholesale.WebForms.Supplier
                     sWebsite = "EMPTY"
                 };
 
-                clsUserDetailsModel result = new clsUserDetailsModel();
-                result = businessLayer.SignUp(data);
 
-                if (result == null || result.iUserId == 0)
-                    throw new Exception();
+
+                if (supplierId == 0)
+                {
+                    result = businessLayer.SignUp(data);
+                    if (result == null || result.iUserId == 0)
+                        throw new Exception();
+                }
+                else
+                {
+                    result = businessLayer.GetUserByUserDetailId(supplierId);
+                    data.iUserDetailsId = result.iUserDetailsId;
+                    data.iUserId = result.iUserId;
+                    businessLayer.Setting(data);
+                }
 
                 pnlErrorCompany.Visible = false;
                 pnlErrorContact.Visible = false;
@@ -111,7 +131,7 @@ namespace AAfruitWholesale.WebForms.Supplier
 
                 switch (Convert.ToInt32(ex.Message))
                 {
-                    
+
                     case (int)ErrorStatus.SignupNameMissing:
                         pnlErrorDetails.Visible = true;
                         lblErrorDetails.Text = "Please enter owner name";
@@ -136,6 +156,32 @@ namespace AAfruitWholesale.WebForms.Supplier
             {
                 Response.Redirect(string.Format("Error.aspx?stat={0}", (int)ErrorStatus.AddSupplierFail));
             }
+        }
+
+        private void RetrieveSupplier()
+        {
+            clsUserDetailsModel supplier = new clsUserDetailsModel();
+            if (supplierId > 0)
+                supplier = businessLayer.GetUserByUserDetailId(supplierId);
+
+            AssignValue(supplier);
+        }
+
+        private void AssignValue(clsUserDetailsModel supplier)
+        {
+            txtName.Text = supplier.sName;
+            txtSurname.Text = supplier.sSurname;
+            txtAddress.Text = supplier.sAddress;
+            drpCountry.SelectedValue = supplier.iCountryId.ToString();
+
+            txtEmailDetail.Text = supplier.sEmail;
+            txtPhoneFix.Text = supplier.sFixLine;
+            txtPhoneMobile.Text = supplier.sMobile;
+            txtFax.Text = supplier.sFax;
+
+            txtCompany.Text = supplier.sCompany;
+            txtBRN.Text = supplier.sBRN;
+            txtNote.Text = supplier.sNote;
         }
     }
 }
