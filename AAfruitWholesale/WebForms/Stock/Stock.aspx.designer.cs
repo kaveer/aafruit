@@ -31,67 +31,13 @@ namespace AAfruitWholesale.WebForms.Stock {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// txtFruit control.
+        /// drpFruit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFruit;
-        
-        /// <summary>
-        /// txtDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
-        
-        /// <summary>
-        /// txtQuantiy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQuantiy;
-        
-        /// <summary>
-        /// drpMeasureUnit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpMeasureUnit;
-        
-        /// <summary>
-        /// txtUnitPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUnitPrice;
-        
-        /// <summary>
-        /// pnlErrorFruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlErrorFruit;
-        
-        /// <summary>
-        /// lblErrorFruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorFruit;
+        protected global::System.Web.UI.WebControls.DropDownList drpFruit;
         
         /// <summary>
         /// drpSuppliers control.
@@ -103,15 +49,6 @@ namespace AAfruitWholesale.WebForms.Stock {
         protected global::System.Web.UI.WebControls.DropDownList drpSuppliers;
         
         /// <summary>
-        /// txtNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNote;
-        
-        /// <summary>
         /// txtDate control.
         /// </summary>
         /// <remarks>
@@ -121,22 +58,49 @@ namespace AAfruitWholesale.WebForms.Stock {
         protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// pnlErrorSupplier control.
+        /// txtQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlErrorSupplier;
+        protected global::System.Web.UI.WebControls.TextBox txtQuantity;
         
         /// <summary>
-        /// lblErrorSupplier control.
+        /// txtPurchasePrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorSupplier;
+        protected global::System.Web.UI.WebControls.TextBox txtPurchasePrice;
+        
+        /// <summary>
+        /// txtNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNote;
+        
+        /// <summary>
+        /// pnlError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlError;
+        
+        /// <summary>
+        /// lblErrorFruit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorFruit;
         
         /// <summary>
         /// btnAdd control.

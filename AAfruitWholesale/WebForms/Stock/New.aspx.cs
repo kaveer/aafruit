@@ -140,7 +140,7 @@ namespace AAfruitWholesale.WebForms.Stock
                     sDescription = txtDescription.Text.Trim(),
                     bStatus = true,
                     deQuantity = string.IsNullOrWhiteSpace(txtQuantiy.Text.Trim()) ? 0 : Convert.ToDecimal(txtQuantiy.Text.Trim()),
-                    deUnitPrice = string.IsNullOrWhiteSpace(txtUnitPrice.Text.Trim()) ? 0 : Convert.ToDecimal(txtQuantiy.Text.Trim()),
+                    deUnitPrice = string.IsNullOrWhiteSpace(txtUnitPrice.Text.Trim()) ? 0 : Convert.ToDecimal(txtUnitPrice.Text.Trim()),
                 },
                 lstStock = new List<clsStockModel>()
                 {

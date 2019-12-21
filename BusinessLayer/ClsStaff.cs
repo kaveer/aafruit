@@ -150,7 +150,7 @@ namespace BusinessLayer
                 throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidUnitPrice));
 
 
-            foreach (var stock in item.lstStock)
+            foreach (var stock  in item.lstStock)
             {
                 if (stock.objUserDetails == null)
                     throw new FormatException(Convert.ToString((int)ErrorStatus.InventorySupplierDetails));
