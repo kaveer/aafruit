@@ -14,52 +14,63 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Select order</label>
                                 <div class="col-sm-11">
-                                    <asp:DropDownList ID="DropDownList2" CssClass="form-control" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="drpOrders" AutoPostBack="true" OnSelectedIndexChanged="drpOrders_SelectedIndexChanged" CssClass="form-control" runat="server"></asp:DropDownList>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Fruit</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox2" CssClass="form-control" TextMode="Number" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtfruit" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                                 <label for="inputEmail3" class="col-sm-1 control-label">Available</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox4" CssClass="form-control" TextMode="Number" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtQuantityAvailable" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Company</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox5" CssClass="form-control" TextMode="SingleLine" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtCompany" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Request on</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox6" CssClass="form-control" TextMode="Date" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtRequestedOn" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                                 <label for="inputEmail3" class="col-sm-1 control-label">Deadline</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="TextBox9" CssClass="form-control" TextMode="Date" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtDeadLine" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-1 control-label">Quantity</label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox3" CssClass="form-control" TextMode="SingleLine" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtQuantity" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-1 control-label">Total price</label>
+                                <asp:Label ID="lblTotalPrice" Font-Bold="true" CssClass="col-sm-1 control-label" runat="server" Text="Total price"></asp:Label>
                                 <div class="col-sm-11">
-                                    <asp:TextBox ID="TextBox1" CssClass="form-control" TextMode="Number" ReadOnly="true" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="TxtTotalPrice" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
+                        <asp:Panel ID="pnlError" Visible="false" runat="server">
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong>
+                                <asp:Label ID="lblErrorDetails" runat="server" Text="Label"></asp:Label>
+                            </div>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlSuccess" Visible="false" runat="server">
+                            <div class="alert alert-success">
+                                <strong>Success!</strong>
+                                <asp:Label ID="Label1" runat="server" Text="Order processed successfully"></asp:Label>
+                            </div>
+                        </asp:Panel>
                     </div>
                 </div>
-                <asp:Button ID="Button2" CssClass="btn btn-primary" runat="server" Text="Mark as pending" />
-                <asp:Button ID="Button3" CssClass="btn btn-primary" runat="server" Text="Await payment" />
+                <asp:Button ID="btnProcess" OnClick="btnProcess_Click" CssClass="btn btn-primary" runat="server" Text="Process" />
             </div>
         </div>
     </div>

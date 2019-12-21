@@ -13,210 +13,192 @@ namespace AAfruitWholesale.WebForms.Sale {
     public partial class Sales {
         
         /// <summary>
-        /// LinkButton6 control.
+        /// liPendind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liPendind;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// lkPending control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton lkPending;
         
         /// <summary>
-        /// LinkButton3 control.
+        /// liProcessing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liProcessing;
         
         /// <summary>
-        /// LinkButton4 control.
+        /// lkProcessing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        protected global::System.Web.UI.WebControls.LinkButton lkProcessing;
         
         /// <summary>
-        /// LinkButton5 control.
+        /// liReady control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton5;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liReady;
         
         /// <summary>
-        /// LinkButton2 control.
+        /// lkReadyForDelivery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton lkReadyForDelivery;
         
         /// <summary>
-        /// pnlPending control.
+        /// liDelivered control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPending;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liDelivered;
         
         /// <summary>
-        /// GridView1 control.
+        /// lkDelivered control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.LinkButton lkDelivered;
         
         /// <summary>
-        /// Button1 control.
+        /// liReturned control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liReturned;
         
         /// <summary>
-        /// pnlProcessing control.
+        /// lkReturened control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlProcessing;
+        protected global::System.Web.UI.WebControls.LinkButton lkReturened;
         
         /// <summary>
-        /// GridView2 control.
+        /// liHold control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liHold;
         
         /// <summary>
-        /// Button2 control.
+        /// lkHold control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.LinkButton lkHold;
         
         /// <summary>
-        /// pnlDispatched control.
+        /// grdOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDispatched;
+        protected global::System.Web.UI.WebControls.GridView grdOrder;
         
         /// <summary>
-        /// GridView4 control.
+        /// pnlError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView4;
+        protected global::System.Web.UI.WebControls.Panel pnlError;
         
         /// <summary>
-        /// Button4 control.
+        /// lblErrorCredential control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.Label lblErrorCredential;
         
         /// <summary>
-        /// pnlDelivered control.
+        /// btnPending control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlDelivered;
+        protected global::System.Web.UI.WebControls.Button btnPending;
         
         /// <summary>
-        /// GridView5 control.
+        /// btnProcessing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView5;
+        protected global::System.Web.UI.WebControls.Button btnProcessing;
         
         /// <summary>
-        /// pnlReturned control.
+        /// btnReadyForDelivery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlReturned;
+        protected global::System.Web.UI.WebControls.Button btnReadyForDelivery;
         
         /// <summary>
-        /// GridView6 control.
+        /// btnDelivered control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView6;
+        protected global::System.Web.UI.WebControls.Button btnDelivered;
         
         /// <summary>
-        /// Button6 control.
+        /// btnReturned control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button6;
+        protected global::System.Web.UI.WebControls.Button btnReturned;
         
         /// <summary>
-        /// Button5 control.
+        /// btnHold control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button5;
-        
-        /// <summary>
-        /// pnlHold control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlHold;
-        
-        /// <summary>
-        /// GridView3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView3;
+        protected global::System.Web.UI.WebControls.Button btnHold;
     }
 }
