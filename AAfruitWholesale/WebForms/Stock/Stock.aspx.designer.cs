@@ -10,7 +10,7 @@
 namespace AAfruitWholesale.WebForms.Stock {
     
     
-    public partial class New {
+    public partial class Stock {
         
         /// <summary>
         /// pnlSuccess control.
@@ -101,15 +101,6 @@ namespace AAfruitWholesale.WebForms.Stock {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpSuppliers;
-        
-        /// <summary>
-        /// txtPurchasePrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPurchasePrice;
         
         /// <summary>
         /// txtNote control.

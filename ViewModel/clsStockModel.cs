@@ -20,5 +20,6 @@ namespace ViewModel
         public DateTime dDeliveryDate { get; set; }
         public string sNote { get; set; }
         public decimal deQuantityAdded { get; set; }
+        public decimal dePurchasePrice { get; set; }
     }
 }

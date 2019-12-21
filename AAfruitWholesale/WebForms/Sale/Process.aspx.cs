@@ -21,32 +21,39 @@ namespace AAfruitWholesale.WebForms.Sale
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Customer"] == null)
-                throw new Exception();
-
-            sessionData = (clsUserDetailsModel)Session["Customer"];
-            if (sessionData == null || (sessionData.iUserId == 0 || sessionData.iUserDetailsId == 0))
-                throw new Exception();
-
-            userDetails = businessLayer.GetUserByUserDetailId(sessionData.iUserDetailsId);
-            if (userDetails.iUserId == 0 || userDetails.iUserDetailsId == 0)
-                throw new Exception();
-
-            if (!IsPostBack)
+            try
             {
-                LoadOrders();
-                orderId = Request.QueryString["orderid"] == null ? Convert.ToInt32(drpOrders.SelectedValue) : Convert.ToInt32(Request.QueryString["orderid"]);
-                drpOrders.SelectedValue = orderId.ToString();
+                if (Session["Customer"] == null)
+                    throw new Exception();
+
+                sessionData = (clsUserDetailsModel)Session["Customer"];
+                if (sessionData == null || (sessionData.iUserId == 0 || sessionData.iUserDetailsId == 0))
+                    throw new Exception();
+
+                userDetails = businessLayer.GetUserByUserDetailId(sessionData.iUserDetailsId);
+                if (userDetails.iUserId == 0 || userDetails.iUserDetailsId == 0)
+                    throw new Exception();
+
+                if (!IsPostBack)
+                {
+                    LoadOrders();
+                    orderId = Request.QueryString["orderid"] == null ? Convert.ToInt32(drpOrders.SelectedValue) : Convert.ToInt32(Request.QueryString["orderid"]);
+                    drpOrders.SelectedValue = orderId.ToString();
+                }
+
+                if (orderId == 0)
+                    orderId = Convert.ToInt32(drpOrders.SelectedValue);
+
+                var selectedOrder = LoadOrdersByOrderId(orderId);
+                if (selectedOrder != null || selectedOrder.iOrderId != 0)
+                    AssignValue(selectedOrder);
+
+                AddControlAttribute();
             }
-
-            if (orderId == 0)
-                orderId = Convert.ToInt32(drpOrders.SelectedValue);
-
-            var selectedOrder = LoadOrdersByOrderId(orderId);
-            if (selectedOrder != null || selectedOrder.iOrderId != 0)
-                AssignValue(selectedOrder);
-
-            AddControlAttribute();
+            catch (Exception)
+            {
+                Response.Redirect(string.Format("~/Error.aspx?stat={0}", (int)ErrorStatus.InvalidSession));
+            }
         }
 
         protected void drpOrders_SelectedIndexChanged(object sender, EventArgs e)

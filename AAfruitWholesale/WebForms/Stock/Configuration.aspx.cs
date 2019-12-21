@@ -55,6 +55,7 @@ namespace AAfruitWholesale.WebForms.Stock
                     drpMeasureUnit.SelectedIndex = 0;
 
                     selectedFruitId = Request.QueryString["fruitid"] == null ? Convert.ToInt32(drpFruit.SelectedValue) : Convert.ToInt32(Request.QueryString["fruitid"]);
+                    drpFruit.SelectedValue = selectedFruitId.ToString();
                     LoadFruitByFruitId(selectedFruitId);
                 }
 

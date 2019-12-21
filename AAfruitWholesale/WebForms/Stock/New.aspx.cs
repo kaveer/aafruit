@@ -106,12 +106,16 @@ namespace AAfruitWholesale.WebForms.Stock
                         lblErrorFruit.Text = "Invalid unit price";
                         break;
                     case (int)ErrorStatus.InventorySupplierDetails:
-                        pnlErrorSupplier.Visible = false;
+                        pnlErrorSupplier.Visible = true;
                         lblErrorSupplier.Text = "invalid supplier details";
                         break;
                     case (int)ErrorStatus.InventoryInvalidDeliveryDate:
-                        pnlErrorSupplier.Visible = false;
+                        pnlErrorSupplier.Visible = true;
                         lblErrorSupplier.Text = "Invalid delivery date";
+                        break;
+                    case (int)ErrorStatus.InventoryInvalidPurchasePrice:
+                        pnlErrorSupplier.Visible = true;
+                        lblErrorSupplier.Text = "Invalid Purchase price";
                         break;
                     default:
                         break;
@@ -151,6 +155,7 @@ namespace AAfruitWholesale.WebForms.Stock
                         sNote = txtNote.Text.Trim(),
                         deQuantityAdded = string.IsNullOrWhiteSpace(txtQuantiy.Text.Trim()) ? 0 : Convert.ToDecimal(txtQuantiy.Text.Trim()),
                         dDeliveryDate = GetValidDate(txtDate.Text.Trim()),
+                        dePurchasePrice = string.IsNullOrWhiteSpace(txtPurchasePrice.Text.Trim()) ? 0 : Convert.ToDecimal(txtPurchasePrice.Text.Trim())
                     }
                 }
             };

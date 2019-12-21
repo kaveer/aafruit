@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="New.aspx.cs" Inherits="AAfruitWholesale.WebForms.Stock.New" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Stock.aspx.cs" Inherits="AAfruitWholesale.WebForms.Stock.Stock" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
@@ -67,12 +67,6 @@
                                 <label for="inputEmail3" class="col-sm-1 control-label">Supplier</label>
                                 <div class="col-sm-11">
                                     <asp:DropDownList ID="drpSuppliers" CssClass="form-control" runat="server"></asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-1 control-label">Purchase price</label>
-                                <div class="col-sm-11">
-                                    <asp:TextBox ID="txtPurchasePrice" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">

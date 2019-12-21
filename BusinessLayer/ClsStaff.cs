@@ -9,7 +9,7 @@ using ViewModel;
 
 namespace BusinessLayer
 {
-    public class ClsStaff:clsUser
+    public class ClsStaff : clsUser
     {
         clsStaffData dataLayer = new clsStaffData();
 
@@ -76,14 +76,30 @@ namespace BusinessLayer
             dataLayer.UpdateOrderStatus(orderId, item);
         }
 
-        public List<clsOrderModel> SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
+        public clsReportModel SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
-            return null;
+            clsReportModel result = new clsReportModel();
+            DataSet data = new DataSet();
+
+            if (isSearch)
+                IsSearchModelVald(from, to);
+
+            data = dataLayer.SalesReport(isSearch, from, to);
+            result = BuildReportModel(data, false);
+            return result;
         }
 
-        public List<StockSummaryModel> PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
+        public clsReportModel PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
-            return null;
+            clsReportModel result = new clsReportModel();
+            DataSet data = new DataSet();
+
+            if (isSearch)
+                IsSearchModelVald(from, to);
+
+            data = dataLayer.PurchaseReport(isSearch, from, to);
+            result = BuildReportModel(data, true);
+            return result;
         }
 
         private UserType GetUserType(int userTypeId)
@@ -144,6 +160,30 @@ namespace BusinessLayer
 
                 if (stock.dDeliveryDate < DateTime.Today)
                     throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidDeliveryDate));
+
+                if (stock.dePurchasePrice == 0)
+                    throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidPurchasePrice));
+            }
+
+            return result;
+        }
+
+        private void IsSearchModelVald(DateTime? from, DateTime? to)
+        {
+            throw new NotImplementedException();
+        }
+
+        private clsReportModel BuildReportModel(DataSet data, bool IsPurchaseReport)
+        {
+            clsReportModel result = new clsReportModel();
+
+            if (IsPurchaseReport)
+            {
+
+            }
+            else
+            {
+
             }
 
             return result;

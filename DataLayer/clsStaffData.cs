@@ -111,7 +111,33 @@ namespace DataLayer
 
         public DataSet PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
-            return null;
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblStockReportRetrieve", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@isSearch", isSearch));
+            command.Parameters.Add(new SqlParameter("@from", from));
+            command.Parameters.Add(new SqlParameter("@to", to));
+
+            data.Load(command.ExecuteReader());
+
+            result.Tables.Add(data);
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
         }
 
         private void DeleteOrders(int userDetailsId)
@@ -230,6 +256,7 @@ namespace DataLayer
                     command.Parameters.Add(new SqlParameter("@DeliveryDate", stock.dDeliveryDate));
                     command.Parameters.Add(new SqlParameter("@note", stock.sNote));
                     command.Parameters.Add(new SqlParameter("@quantity", stock.deQuantityAdded));
+                    command.Parameters.Add(new SqlParameter("@purchasePrice", stock.dePurchasePrice));
 
                     command.ExecuteNonQuery();
                 }

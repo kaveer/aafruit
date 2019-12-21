@@ -73,6 +73,8 @@
                                         <asp:HyperLink ID="HyperLink18" NavigateUrl="~/WebForms/Stock/New.aspx" runat="server">New fruit</asp:HyperLink></li>
                                     <li>
                                         <asp:HyperLink ID="HyperLink19" NavigateUrl="~/WebForms/Stock/Configuration.aspx" runat="server">Configuration</asp:HyperLink></li>
+                                    <li>
+                                        <asp:HyperLink ID="HyperLink1" NavigateUrl="~/WebForms/Stock/Stock.aspx" runat="server">Stock Management</asp:HyperLink></li>
                                 </ul>
                             </li>
                             <li>

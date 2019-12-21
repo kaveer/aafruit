@@ -143,6 +143,7 @@
     <Content Include="WebForms\Stock\Configuration.aspx" />
     <Content Include="WebForms\Stock\Inventory.aspx" />
     <Content Include="WebForms\Stock\New.aspx" />
+    <Content Include="WebForms\Stock\Stock.aspx" />
     <Content Include="WebForms\Supplier\Upsert.aspx" />
     <Content Include="WebForms\Supplier\View.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -308,6 +309,13 @@
     </Compile>
     <Compile Include="WebForms\Stock\New.aspx.designer.cs">
       <DependentUpon>New.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Stock\Stock.aspx.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Stock\Stock.aspx.designer.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Supplier\Upsert.aspx.cs">
       <DependentUpon>Upsert.aspx</DependentUpon>
