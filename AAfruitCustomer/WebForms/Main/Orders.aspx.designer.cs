@@ -13,6 +13,15 @@ namespace AAfruitCustomer.WebForms.Main {
     public partial class Orders {
         
         /// <summary>
+        /// liPendind control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liPendind;
+        
+        /// <summary>
         /// lkPending control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace AAfruitCustomer.WebForms.Main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkPending;
+        
+        /// <summary>
+        /// liProcessing control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liProcessing;
         
         /// <summary>
         /// lkProcessing control.
@@ -31,6 +49,15 @@ namespace AAfruitCustomer.WebForms.Main {
         protected global::System.Web.UI.WebControls.LinkButton lkProcessing;
         
         /// <summary>
+        /// liReady control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liReady;
+        
+        /// <summary>
         /// lkReadyForDelivery control.
         /// </summary>
         /// <remarks>
@@ -38,6 +65,15 @@ namespace AAfruitCustomer.WebForms.Main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkReadyForDelivery;
+        
+        /// <summary>
+        /// liDelivered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liDelivered;
         
         /// <summary>
         /// lkDelivery control.
@@ -49,6 +85,15 @@ namespace AAfruitCustomer.WebForms.Main {
         protected global::System.Web.UI.WebControls.LinkButton lkDelivery;
         
         /// <summary>
+        /// liReturned control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liReturned;
+        
+        /// <summary>
         /// lkReturned control.
         /// </summary>
         /// <remarks>
@@ -56,6 +101,15 @@ namespace AAfruitCustomer.WebForms.Main {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lkReturned;
+        
+        /// <summary>
+        /// liHold control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liHold;
         
         /// <summary>
         /// lkHold control.

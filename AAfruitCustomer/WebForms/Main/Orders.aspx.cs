@@ -52,56 +52,46 @@ namespace AAfruitCustomer.WebForms.Main
 
         private void LoadOrderType(int orderType)
         {
-            DataTable dataTable = new DataTable();
+            
 
             switch (orderType)
             {
                 case (int)OrderType.Pending:
                     customerOrder = BusinessLayer.ViewOrder(false, userDetails.iUserDetailsId, OrderType.Pending);
-                    dataTable = GenerateCustomCol(customerOrder);
-                    grdOrder.DataSource = dataTable;
-                    grdOrder.RowDataBound += new GridViewRowEventHandler(GrdCustomer_RowDataBound);
-                    grdOrder.DataBind();
+                    BindData(customerOrder);
+                    CssSetting(OrderType.Pending);
                     break;
                 case (int)OrderType.Processing:
                     customerOrder = BusinessLayer.ViewOrder(false, userDetails.iUserDetailsId, OrderType.Processing);
-                    dataTable = GenerateCustomCol(customerOrder);
-                    grdOrder.DataSource = dataTable;
-                    grdOrder.RowDataBound += new GridViewRowEventHandler(GrdCustomer_RowDataBound);
-                    grdOrder.DataBind();
+                    BindData(customerOrder);
+                    CssSetting(OrderType.Processing);
                     break;
                 case (int)OrderType.ReadyForDelivery:
                     customerOrder = BusinessLayer.ViewOrder(false, userDetails.iUserDetailsId, OrderType.ReadyForDelivery);
-                    dataTable = GenerateCustomCol(customerOrder);
-                    grdOrder.DataSource = dataTable;
-                    grdOrder.RowDataBound += new GridViewRowEventHandler(GrdCustomer_RowDataBound);
-                    grdOrder.DataBind();
+                    BindData(customerOrder);
+                    CssSetting(OrderType.ReadyForDelivery);
                     break;
                 case (int)OrderType.Delivered:
-                    customerOrder = BusinessLayer.ViewOrder(true, userDetails.iUserDetailsId, OrderType.Delivered);
-                    dataTable = GenerateCustomCol(customerOrder);
-                    grdOrder.DataSource = dataTable;
-                    grdOrder.RowDataBound += new GridViewRowEventHandler(GrdCustomer_RowDataBound);
-                    grdOrder.DataBind();
+                    customerOrder = BusinessLayer.ViewOrder(false, userDetails.iUserDetailsId, OrderType.Delivered);
+                    BindData(customerOrder);
+                    CssSetting(OrderType.Delivered);
                     break;
                 case (int)OrderType.Returned:
-                    customerOrder = BusinessLayer.ViewOrder(true, userDetails.iUserDetailsId, OrderType.Returned);
-                    dataTable = GenerateCustomCol(customerOrder);
-                    grdOrder.DataSource = dataTable;
-                    grdOrder.RowDataBound += new GridViewRowEventHandler(GrdCustomer_RowDataBound);
-                    grdOrder.DataBind();
+                    customerOrder = BusinessLayer.ViewOrder(false, userDetails.iUserDetailsId, OrderType.Returned);
+                    BindData(customerOrder);
+                    CssSetting(OrderType.Returned);
                     break;
                 case (int)OrderType.Hold:
                     customerOrder = BusinessLayer.ViewOrder(false, userDetails.iUserDetailsId, OrderType.Hold);
-                    dataTable = GenerateCustomCol(customerOrder);
-                    grdOrder.DataSource = dataTable;
-                    grdOrder.RowDataBound += new GridViewRowEventHandler(GrdCustomer_RowDataBound);
-                    grdOrder.DataBind();
+                    BindData(customerOrder);
+                    CssSetting(OrderType.Hold);
                     break;
                 default:
                     break;
             }
         }
+
+       
 
         protected void lkPending_Click(object sender, EventArgs e)
         {
@@ -167,6 +157,72 @@ namespace AAfruitCustomer.WebForms.Main
             return table;
         }
 
-     
+        private void BindData(List<clsOrderModel> customerOrder)
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable = GenerateCustomCol(customerOrder);
+            grdOrder.DataSource = dataTable;
+            grdOrder.RowDataBound += new GridViewRowEventHandler(GrdCustomer_RowDataBound);
+            grdOrder.DataBind();
+        }
+
+        private void CssSetting(OrderType orderType)
+        {
+            switch (orderType)
+            {
+                case OrderType.Pending:
+                    liPendind.Attributes["class"] = "active";
+                    liProcessing.Attributes["class"] = "";
+                    liReady.Attributes["class"] = "";
+                    liDelivered.Attributes["class"] = "";
+                    liReturned.Attributes["class"] = "";
+                    liHold.Attributes["class"] = "";
+                    break;
+                case OrderType.Processing:
+                    liPendind.Attributes["class"] = "";
+                    liProcessing.Attributes["class"] = "active";
+                    liReady.Attributes["class"] = "";
+                    liDelivered.Attributes["class"] = "";
+                    liReturned.Attributes["class"] = "";
+                    liHold.Attributes["class"] = "";
+                    break;
+                case OrderType.ReadyForDelivery:
+                    liPendind.Attributes["class"] = "";
+                    liProcessing.Attributes["class"] = "";
+                    liReady.Attributes["class"] = "active";
+                    liDelivered.Attributes["class"] = "";
+                    liReturned.Attributes["class"] = "";
+                    liHold.Attributes["class"] = "";
+                    break;
+                case OrderType.Delivered:
+                    liPendind.Attributes["class"] = "";
+                    liProcessing.Attributes["class"] = "";
+                    liReady.Attributes["class"] = "";
+                    liDelivered.Attributes["class"] = "active";
+                    liReturned.Attributes["class"] = "";
+                    liHold.Attributes["class"] = "";
+                    break;
+                case OrderType.Returned:
+                    liPendind.Attributes["class"] = "";
+                    liProcessing.Attributes["class"] = "";
+                    liReady.Attributes["class"] = "";
+                    liDelivered.Attributes["class"] = "";
+                    liReturned.Attributes["class"] = "active";
+                    liHold.Attributes["class"] = "";
+                    break;
+                case OrderType.Hold:
+                    liPendind.Attributes["class"] = "";
+                    liProcessing.Attributes["class"] = "";
+                    liReady.Attributes["class"] = "";
+                    liDelivered.Attributes["class"] = "";
+                    liReturned.Attributes["class"] = "";
+                    liHold.Attributes["class"] = "active";
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 }

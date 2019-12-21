@@ -28,28 +28,27 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-tabs">
-                    <li role="presentation" class="active">
+                    <li id="liPendind" role="presentation" runat="server">
                         <asp:LinkButton ID="lkPending" OnClick="lkPending_Click" runat="server">Pending</asp:LinkButton></li>
-                    <li role="presentation" class="active">
+                    <li id="liProcessing" role="presentation" runat="server">
                         <asp:LinkButton ID="lkProcessing" OnClick="lkProcessing_Click" runat="server">Processing</asp:LinkButton></li>
-                    <li role="presentation" class="active">
+                    <li id="liReady" role="presentation" runat="server">
                         <asp:LinkButton ID="lkReadyForDelivery" OnClick="lkReadyForDelivery_Click" runat="server">Ready to deliver</asp:LinkButton></li>
-                    <li role="presentation" class="active">
+                    <li id="liDelivered" role="presentation" runat="server">
                         <asp:LinkButton ID="lkDelivery" OnClick="lkDelivery_Click" runat="server">Delivered</asp:LinkButton></li>
-                    <li role="presentation" class="active">
+                    <li id="liReturned" role="presentation" runat="server">
                         <asp:LinkButton ID="lkReturned" OnClick="lkReturned_Click" runat="server">Returned/incomplete</asp:LinkButton></li>
-                    <li role="presentation" class="active">
+                    <li id="liHold" role="presentation" runat="server">
                         <asp:LinkButton ID="lkHold" OnClick="lkHold_Click" runat="server">Hold</asp:LinkButton></li>
                 </ul>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <asp:Panel ID="pnlGrid" runat="server">
-                            <asp:GridView 
-                                ID="grdOrder" 
-                                UseAccessibleHeader="true" 
-                                CssClass="table table-condensed table-hover" 
+                            <asp:GridView
+                                ID="grdOrder"
+                                UseAccessibleHeader="true"
+                                CssClass="table table-condensed table-hover"
                                 runat="server">
-
                             </asp:GridView>
                         </asp:Panel>
                     </div>
