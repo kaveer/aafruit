@@ -76,29 +76,35 @@ namespace BusinessLayer
             dataLayer.UpdateOrderStatus(orderId, item);
         }
 
-        public clsReportModel SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
+        public List<clsOrderModel> SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
-            clsReportModel result = new clsReportModel();
-            DataSet data = new DataSet();
+            //clsReportModel result = new clsReportModel();
+            //DataSet data = new DataSet();
 
-            if (isSearch)
-                IsSearchModelVald(from, to);
+            //if (isSearch)
+            //    IsSearchModelVald(from, to);
 
-            data = dataLayer.SalesReport(isSearch, from, to);
-            result = BuildReportModel(data, false);
-            return result;
+            //data = dataLayer.SalesReport(isSearch, from, to);
+            //result = BuildPurchaseReportModel(data, false);
+            //return result;
+
+            return null;
         }
 
-        public clsReportModel PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
+        public List<StockSummaryModel> PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
-            clsReportModel result = new clsReportModel();
+            List<StockSummaryModel> result = new List<StockSummaryModel>();
             DataSet data = new DataSet();
 
             if (isSearch)
-                IsSearchModelVald(from, to);
+            {
+                if (from < DateTime.Today.AddYears(-4) || to < DateTime.Today.AddYears(-4))
+                    throw new FormatException("Invalid search date");
+            }
+
 
             data = dataLayer.PurchaseReport(isSearch, from, to);
-            result = BuildReportModel(data, true);
+            result = BuildPurchaseReportModel(data);
             return result;
         }
 
@@ -150,7 +156,7 @@ namespace BusinessLayer
                 throw new FormatException(Convert.ToString((int)ErrorStatus.InventoryInvalidUnitPrice));
 
 
-            foreach (var stock  in item.lstStock)
+            foreach (var stock in item.lstStock)
             {
                 if (stock.objUserDetails == null)
                     throw new FormatException(Convert.ToString((int)ErrorStatus.InventorySupplierDetails));
@@ -168,22 +174,41 @@ namespace BusinessLayer
             return result;
         }
 
-        private void IsSearchModelVald(DateTime? from, DateTime? to)
+        private List<StockSummaryModel> BuildPurchaseReportModel(DataSet data)
         {
-            throw new NotImplementedException();
-        }
+            List<StockSummaryModel> result = new List<StockSummaryModel>();
 
-        private clsReportModel BuildReportModel(DataSet data, bool IsPurchaseReport)
-        {
-            clsReportModel result = new clsReportModel();
 
-            if (IsPurchaseReport)
+            if (data?.Tables.Count > 0 || data.Tables[0].Rows.Count > 0)
             {
+                foreach (DataRow item in data.Tables[0].Rows)
+                {
+                    StockSummaryModel stock = new StockSummaryModel()
+                    {
+                        objFruit = new clsFruitModel()
+                        {
+                            sFruitName = item[7].ToString()
+                        },
+                        lstStock = new List<clsStockModel>()
+                        {
+                            new clsStockModel()
+                            {
+                                objUserDetails = new clsUserDetailsModel()
+                                {
+                                    sName = item[0].ToString(),
+                                    sUsername = item[1].ToString(),
+                                    sCompany = item[2].ToString(),
+                                },
+                                bStatus = Convert.ToBoolean(item[3].ToString()),
+                                dDeliveryDate = Convert.ToDateTime(item[4]),
+                                deQuantityAdded = string.IsNullOrWhiteSpace(item[5].ToString())? 0: Convert.ToDecimal(item[5].ToString()),
+                                dePurchasePrice = string.IsNullOrWhiteSpace(item[6].ToString())? 0: Convert.ToDecimal(item[6].ToString())
+                            }
+                        }
+                    };
 
-            }
-            else
-            {
-
+                    result.Add(stock);
+                }
             }
 
             return result;

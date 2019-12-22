@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,7 +15,7 @@ namespace AAfruitWholesale.WebForms.Report
     {
         clsUserDetailsModel sessionData = new clsUserDetailsModel();
         clsUserDetailsModel userDetails = new clsUserDetailsModel();
-        clsReportModel reports = new clsReportModel();
+        List<StockSummaryModel> reports = new List<StockSummaryModel>();
 
         ClsStaff businessLayer = new ClsStaff();
         clsMaster master = new clsMaster();
@@ -44,36 +45,7 @@ namespace AAfruitWholesale.WebForms.Report
             catch (FormatException ex)
             {
                 pnlError.Visible = false;
-
-                //switch (Convert.ToInt32(ex.Message))
-                //{
-                //    case (int)ErrorStatus.InventoryInvalidModel:
-                //        pnlError.Visible = true;
-                //        lblErrorFruit.Text = "Invalid fruit details";
-                //        break;
-                //    case (int)ErrorStatus.InventoryInvalidFruitName:
-                //        pnlErrorFruit.Visible = true;
-                //        lblErrorFruit.Text = "Invalid fruit name";
-                //        break;
-                //    case (int)ErrorStatus.InventoryInvalidQuantity:
-                //        pnlErrorFruit.Visible = true;
-                //        lblErrorFruit.Text = "Invalid quantity";
-                //        break;
-                //    case (int)ErrorStatus.InventoryInvalidUnitPrice:
-                //        pnlErrorFruit.Visible = true;
-                //        lblErrorFruit.Text = "Invalid unit price";
-                //        break;
-                //    case (int)ErrorStatus.InventorySupplierDetails:
-                //        pnlErrorSupplier.Visible = false;
-                //        lblErrorSupplier.Text = "invalid supplier details";
-                //        break;
-                //    case (int)ErrorStatus.InventoryInvalidDeliveryDate:
-                //        pnlErrorSupplier.Visible = false;
-                //        lblErrorSupplier.Text = "Invalid delivery date";
-                //        break;
-                //    default:
-                //        break;
-                //}
+                lblErrorCredential.Text = ex.Message;
             }
             catch (Exception ex)
             {
@@ -81,48 +53,21 @@ namespace AAfruitWholesale.WebForms.Report
             }
         }
 
-      
+
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
-
                 pnlError.Visible = false;
+
+                reports = businessLayer.PurchaseReport(true, Convert.ToDateTime(txtFrom.Text.Trim()), Convert.ToDateTime(txtTo.Text.Trim()));
+                BindData();
             }
             catch (FormatException ex)
             {
-                pnlError.Visible = false;
-
-                //switch (Convert.ToInt32(ex.Message))
-                //{
-                //    case (int)ErrorStatus.InventoryInvalidModel:
-                //        pnlError.Visible = true;
-                //        lblErrorFruit.Text = "Invalid fruit details";
-                //        break;
-                //    case (int)ErrorStatus.InventoryInvalidFruitName:
-                //        pnlErrorFruit.Visible = true;
-                //        lblErrorFruit.Text = "Invalid fruit name";
-                //        break;
-                //    case (int)ErrorStatus.InventoryInvalidQuantity:
-                //        pnlErrorFruit.Visible = true;
-                //        lblErrorFruit.Text = "Invalid quantity";
-                //        break;
-                //    case (int)ErrorStatus.InventoryInvalidUnitPrice:
-                //        pnlErrorFruit.Visible = true;
-                //        lblErrorFruit.Text = "Invalid unit price";
-                //        break;
-                //    case (int)ErrorStatus.InventorySupplierDetails:
-                //        pnlErrorSupplier.Visible = false;
-                //        lblErrorSupplier.Text = "invalid supplier details";
-                //        break;
-                //    case (int)ErrorStatus.InventoryInvalidDeliveryDate:
-                //        pnlErrorSupplier.Visible = false;
-                //        lblErrorSupplier.Text = "Invalid delivery date";
-                //        break;
-                //    default:
-                //        break;
-                //}
+                pnlError.Visible = true;
+                lblErrorCredential.Text = ex.Message;
             }
             catch (Exception)
             {
@@ -132,15 +77,38 @@ namespace AAfruitWholesale.WebForms.Report
 
         protected void btnDownload_Click(object sender, EventArgs e)
         {
+            using (StringWriter sw = new StringWriter())
+            {
+                using (HtmlTextWriter hw = new HtmlTextWriter(sw))
+                {
+                    //To Export all pages
+                    GridView1.AllowPaging = false;
+                    this.BindGrid();
 
+                    GridView1.RenderControl(hw);
+                    StringReader sr = new StringReader(sw.ToString());
+                    Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
+                    HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+                    PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+                    pdfDoc.Open();
+                    htmlparser.Parse(sr);
+                    pdfDoc.Close();
+
+                    Response.ContentType = "application/pdf";
+                    Response.AddHeader("content-disposition", "attachment;filename=GridViewExport.pdf");
+                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                    Response.Write(pdfDoc);
+                    Response.End();
+                }
+            }
         }
 
         private void BindData()
         {
             DataTable dataTable = new DataTable();
-            if (reports != null || reports.Purchase.Count > 0)
+            if (reports != null || reports.Count > 0)
             {
-                dataTable = GenerateCustomCol(reports);
+                dataTable = GenerateCustomCol();
 
                 grdPurchase.DataSource = null;
                 grdPurchase.DataBind();
@@ -150,36 +118,38 @@ namespace AAfruitWholesale.WebForms.Report
             }
         }
 
-        private DataTable GenerateCustomCol(clsReportModel reports)
+        private DataTable GenerateCustomCol()
         {
             DataTable table = new DataTable();
-            table.Columns.Add("OrderId", typeof(int));
             table.Columns.Add("Name", typeof(string));
+            table.Columns.Add("Surbane", typeof(string));
             table.Columns.Add("Company", typeof(string));
-            table.Columns.Add("Requested", typeof(string));
-            table.Columns.Add("Deadline", typeof(string));
-            table.Columns.Add("Quantity", typeof(decimal));
-            table.Columns.Add("Total price", typeof(decimal));
-            table.Columns.Add("Discount", typeof(string));
-            table.Columns.Add("Discount price", typeof(decimal));
+            table.Columns.Add("Status", typeof(string));
+            table.Columns.Add("Delivery", typeof(string));
+            table.Columns.Add("Quantity", typeof(string));
+            table.Columns.Add("Purchase Price", typeof(decimal));
             table.Columns.Add("Fruit", typeof(string));
 
-            //if (orders.Count > 0)
-            //{
-            //    foreach (var item in orders)
-            //        table.Rows.Add(
-            //            item.iOrderId,
-            //            string.Format("{0} {1}", item.objUserDetails.sName, item.objUserDetails.sSurname),
-            //            item.objUserDetails.sCompany,
-            //            item.dRequestedDate.ToString("MM/dd/yyyy"),
-            //            item.dDeadline.ToString("MM/dd/yyyy"),
-            //            item.deQuantity,
-            //            item.deTotalPrice,
-            //            item.sDiscount,
-            //            item.deTotalPriceAfterDiscount,
-            //            item.objFruit.sFruitName
-            //            );
-            //}
+            if (reports.Count > 0)
+            {
+                foreach (var report in reports)
+                {
+                    clsStockModel stockDetails = new clsStockModel();
+                    if (report.lstStock.Count > 0)
+                        stockDetails = report.lstStock.First();
+
+                    table.Rows.Add(
+                        stockDetails.objUserDetails.sName,
+                        stockDetails.objUserDetails.sUsername,
+                        stockDetails.objUserDetails.sCompany,
+                        stockDetails.bStatus? "Active": "Inactive",
+                        stockDetails.dDeliveryDate.ToString("MM/dd/yyyy"),
+                        stockDetails.deQuantityAdded,
+                        stockDetails.dePurchasePrice,
+                        report.objFruit.sFruitName
+                   );
+                }
+            }
 
             return table;
         }

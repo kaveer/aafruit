@@ -122,13 +122,13 @@ namespace DataLayer
             if (connection == null)
                 throw new Exception();
 
-            SqlCommand command = new SqlCommand("tblStockReportRetrieve", connection)
+            SqlCommand command = new SqlCommand("tblStockPurchaseReportRetrieve", connection)
             {
                 CommandType = CommandType.StoredProcedure
             };
             command.Parameters.Add(new SqlParameter("@isSearch", isSearch));
-            command.Parameters.Add(new SqlParameter("@from", from));
-            command.Parameters.Add(new SqlParameter("@to", to));
+            command.Parameters.Add(new SqlParameter("@from", from == null? DateTime.Now: from));
+            command.Parameters.Add(new SqlParameter("@to", to == null? DateTime.Now: to));
 
             data.Load(command.ExecuteReader());
 

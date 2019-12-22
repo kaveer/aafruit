@@ -1,6 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Purchase.aspx.cs" Inherits="AAfruitWholesale.WebForms.Report.Purchase" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        .table-condensed tr th {
+            border: 0px solid #6e7bd9;
+            color: white;
+            background-color: #6e7bd9;
+        }
+
+        .table-condensed, .table-condensed tr td {
+            border: 0px solid #000;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f7ff
+        }
+
+        tr:nth-child(odd) {
+            background: #fff;
+        }
+    </style>
+
     <div class="jumbotron">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -28,7 +48,12 @@
                         <asp:Label ID="lblErrorCredential" runat="server" Text="Select an order to continue"></asp:Label>
                     </div>
                 </asp:Panel>
-                <asp:GridView ID="grdPurchase" runat="server"></asp:GridView>
+                <asp:GridView
+                    ID="grdPurchase"
+                    UseAccessibleHeader="true"
+                    CssClass="table table-condensed table-hover" 
+                    runat="server">
+                </asp:GridView>
                 <asp:Button ID="btnDownload" OnClick="btnDownload_Click" CssClass="btn btn-primary" runat="server" Text="Download" />
             </div>
         </div>
