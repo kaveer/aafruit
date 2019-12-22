@@ -1,4 +1,7 @@
 ﻿using BusinessLayer;
+using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -81,11 +84,9 @@ namespace AAfruitWholesale.WebForms.Report
             {
                 using (HtmlTextWriter hw = new HtmlTextWriter(sw))
                 {
-                    //To Export all pages
-                    GridView1.AllowPaging = false;
-                    this.BindGrid();
+                    grdPurchase.AllowPaging = false;
 
-                    GridView1.RenderControl(hw);
+                    grdPurchase.RenderControl(hw);
                     StringReader sr = new StringReader(sw.ToString());
                     Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
                     HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
@@ -101,6 +102,11 @@ namespace AAfruitWholesale.WebForms.Report
                     Response.End();
                 }
             }
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            return;
         }
 
         private void BindData()
