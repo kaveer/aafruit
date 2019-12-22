@@ -36,5 +36,39 @@ namespace BusinessLayer.Helper
 
             return result;
         }
+
+        public static OrderType  GetOrderType(int orderId)
+        {
+            OrderType result = new OrderType();
+
+            switch (orderId)
+            {
+                case (int)OrderType.Pending:
+                    result = OrderType.Pending;
+                    break;
+                case (int)OrderType.Processing:
+                    result = OrderType.Processing;
+                    break;
+                case (int)OrderType.AwaitPayment:
+                    result = OrderType.AwaitPayment;
+                    break;
+                case (int)OrderType.ReadyForDelivery:
+                    result = OrderType.ReadyForDelivery;
+                    break;
+                case (int)OrderType.Delivered:
+                    result = OrderType.Delivered;
+                    break;
+                case (int)OrderType.Returned:
+                    result = OrderType.Returned;
+                    break;
+                case (int)OrderType.Hold:
+                    result = OrderType.Hold;
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
     }
 }

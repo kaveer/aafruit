@@ -64,7 +64,7 @@ namespace AAfruitWholesale.WebForms.Report
             {
                 pnlError.Visible = false;
 
-                reports = businessLayer.PurchaseReport(true, Convert.ToDateTime(txtFrom.Text.Trim()), Convert.ToDateTime(txtTo.Text.Trim()));
+                reports = businessLayer.PurchaseReport(true, GetValidDate(txtFrom.Text.Trim()), GetValidDate(txtTo.Text.Trim()));
                 BindData();
             }
             catch (FormatException ex)

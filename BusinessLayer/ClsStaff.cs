@@ -1,4 +1,5 @@
-﻿using DataLayer;
+﻿using BusinessLayer.Helper;
+using DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -78,17 +79,19 @@ namespace BusinessLayer
 
         public List<clsOrderModel> SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
-            //clsReportModel result = new clsReportModel();
-            //DataSet data = new DataSet();
+            List<clsOrderModel> result = new List<clsOrderModel>();
+            DataSet data = new DataSet();
 
-            //if (isSearch)
-            //    IsSearchModelVald(from, to);
+            if (isSearch)
+            {
+                if (from < DateTime.Today || to < DateTime.Today)
+                    throw new FormatException("Invalid search date");
+            }
 
-            //data = dataLayer.SalesReport(isSearch, from, to);
-            //result = BuildPurchaseReportModel(data, false);
-            //return result;
 
-            return null;
+            data = dataLayer.SalesReport(isSearch, from, to);
+            result = BuildSalesReportModel(data);
+            return result;
         }
 
         public List<StockSummaryModel> PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
@@ -98,7 +101,7 @@ namespace BusinessLayer
 
             if (isSearch)
             {
-                if (from < DateTime.Today.AddYears(-4) || to < DateTime.Today.AddYears(-4))
+                if (from < DateTime.Today || to < DateTime.Today)
                     throw new FormatException("Invalid search date");
             }
 
@@ -208,6 +211,40 @@ namespace BusinessLayer
                     };
 
                     result.Add(stock);
+                }
+            }
+
+            return result;
+        }
+
+        private List<clsOrderModel> BuildSalesReportModel(DataSet data)
+        {
+            List<clsOrderModel> result = new List<clsOrderModel>();
+
+            if (data?.Tables.Count > 0 || data.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow item in data.Tables[0].Rows)
+                {
+                    clsOrderModel order = new clsOrderModel()
+                    {
+                        objUserDetails = new clsUserDetailsModel()
+                        {
+                            sCompany = item[0].ToString()
+                        },
+                        dRequestedDate = Convert.ToDateTime(item[1]),
+                        dDeadline = Convert.ToDateTime(item[2]),
+                        deQuantity = Convert.ToDecimal(item[3]),
+                        deTotalPrice = Convert.ToDecimal(item[4]),
+                        sDiscount = item[5].ToString(),
+                        deTotalPriceAfterDiscount = Convert.ToDecimal(item[6]),
+                        eOrderType = clsCommon.GetOrderType(Convert.ToInt32(item[7])),
+                        objFruit = new clsFruitModel()
+                        {
+                            sFruitName = item[8].ToString()
+                        }
+                    };
+
+                    result.Add(order);
                 }
             }
 

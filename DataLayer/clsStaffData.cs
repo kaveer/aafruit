@@ -106,7 +106,33 @@ namespace DataLayer
 
         public DataSet SalesReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
         {
-            return null;
+            DataSet result = new DataSet();
+            DataTable data = new DataTable();
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new Exception();
+
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+            if (connection == null)
+                throw new Exception();
+
+            SqlCommand command = new SqlCommand("tblOrderSalesReportRetrieve", connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add(new SqlParameter("@isSearch", isSearch));
+            command.Parameters.Add(new SqlParameter("@from", from == null ? DateTime.Now : from));
+            command.Parameters.Add(new SqlParameter("@to", to == null ? DateTime.Now : to));
+
+            data.Load(command.ExecuteReader());
+
+            result.Tables.Add(data);
+
+            if (connection != null)
+                connection.Close();
+
+            return result;
         }
 
         public DataSet PurchaseReport(bool isSearch = false, DateTime? from = null, DateTime? to = null)
