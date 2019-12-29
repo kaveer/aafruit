@@ -166,10 +166,10 @@ namespace AAfruitWholesale.WebForms.Report
             DateTime result = DateTime.Now;
 
             if (string.IsNullOrWhiteSpace(date))
-                return result = now.AddYears(-5);
+                return result = now;
 
             if (!DateTime.TryParse(date, out result))
-                return result = now.AddYears(-5);
+                return result = now;
 
             return result;
         }

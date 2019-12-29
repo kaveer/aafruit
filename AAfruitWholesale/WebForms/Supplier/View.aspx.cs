@@ -22,30 +22,46 @@ namespace AAfruitWholesale.WebForms.Supplier
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Customer"] == null)
-                throw new Exception();
+            try
+            {
+                if (Session["Customer"] == null)
+                    throw new Exception();
 
-            sessionData = (clsUserDetailsModel)Session["Customer"];
-            if (sessionData == null || (sessionData.iUserId == 0 || sessionData.iUserDetailsId == 0))
-                throw new Exception();
+                sessionData = (clsUserDetailsModel)Session["Customer"];
+                if (sessionData == null || (sessionData.iUserId == 0 || sessionData.iUserDetailsId == 0))
+                    throw new Exception();
 
-            userDetails = businessLayer.GetUserByUserDetailId(sessionData.iUserDetailsId);
-            if (userDetails.iUserId == 0 || userDetails.iUserDetailsId == 0)
-                throw new Exception();
+                userDetails = businessLayer.GetUserByUserDetailId(sessionData.iUserDetailsId);
+                if (userDetails.iUserId == 0 || userDetails.iUserDetailsId == 0)
+                    throw new Exception();
 
-            if (!IsPostBack)
-                RetrieveSupplier();
+                if (!IsPostBack)
+                    RetrieveSupplier();
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect(string.Format("~/Error.aspx?stat={0}", (int)ErrorStatus.InvalidSession));
+            }
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            pnlError.Visible = false;
-            supplierId = grdSupplier.SelectedRow == null ? 0 : Convert.ToInt32(grdSupplier.SelectedRow.Cells[0].Text);
 
-            if (supplierId == 0)
-                throw new Exception();
+            try
+            {
+                pnlError.Visible = false;
+                supplierId = grdSupplier.SelectedRow == null ? 0 : Convert.ToInt32(grdSupplier.SelectedRow.Cells[0].Text);
 
-            Response.Redirect(string.Format("Upsert.aspx?suppid={0}", supplierId), false);
+                if (supplierId == 0)
+                    throw new Exception();
+
+                Response.Redirect(string.Format("Upsert.aspx?suppid={0}", supplierId), false);
+            }
+            catch (Exception ex)
+            {
+                pnlError.Visible = true;
+                lblErrorCredential.Text = "Select a supplier to continue";
+            }
         }
 
         private void RetrieveSupplier()

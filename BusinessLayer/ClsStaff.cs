@@ -82,13 +82,6 @@ namespace BusinessLayer
             List<clsOrderModel> result = new List<clsOrderModel>();
             DataSet data = new DataSet();
 
-            if (isSearch)
-            {
-                if (from < DateTime.Today || to < DateTime.Today)
-                    throw new FormatException("Invalid search date");
-            }
-
-
             data = dataLayer.SalesReport(isSearch, from, to);
             result = BuildSalesReportModel(data);
             return result;
@@ -98,13 +91,6 @@ namespace BusinessLayer
         {
             List<StockSummaryModel> result = new List<StockSummaryModel>();
             DataSet data = new DataSet();
-
-            if (isSearch)
-            {
-                if (from < DateTime.Today || to < DateTime.Today)
-                    throw new FormatException("Invalid search date");
-            }
-
 
             data = dataLayer.PurchaseReport(isSearch, from, to);
             result = BuildPurchaseReportModel(data);

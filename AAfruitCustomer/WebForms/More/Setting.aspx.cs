@@ -89,13 +89,13 @@ namespace AAfruitCustomer.WebForms.More
         {
             if (FromTestbox)
             {
-                userDetails.sEmail = txtEmail.Text.Trim();
+                userDetails.sUsername = txtEmail.Text.Trim();
                 userDetails.sPassword = txtPassword.Text.Trim();
                 userDetails.sReEnterPassword = txtRePassword.Text.Trim();
             }
             else
             {
-                txtEmail.Text = userDetails.sEmail;
+                txtEmail.Text = userDetails.sUsername;
             }
         }
     }

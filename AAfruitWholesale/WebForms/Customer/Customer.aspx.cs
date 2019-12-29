@@ -164,6 +164,19 @@ namespace AAfruitWholesale.WebForms.Customer
         protected void grdCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedUserDetailsId = Convert.ToInt32(grdCustomer.SelectedRow.Cells[0].Text);
+            if (selectedUserDetailsId != 0)
+            {
+                var userDetails = BusinessLayer.GetUserByUserDetailId(selectedUserDetailsId);
+                if (userDetails.bStatus)
+                {
+                    btnSuspend.Text = "Suspend";
+                }
+                else
+                {
+                    btnSuspend.Text = "Activate";
+
+                }
+            }
             foreach (GridViewRow row in grdCustomer.Rows)
             {
                 if (row.RowIndex == grdCustomer.SelectedIndex)

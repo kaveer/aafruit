@@ -36,7 +36,8 @@ namespace ViewModel
         Dekagram = 2,
         Hectogram = 3,
         Kilogram = 4,
-        Ton = 5
+        Ton = 5,
+        unit = 6
     }
 
     public  enum ErrorStatus
