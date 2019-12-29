@@ -59,10 +59,50 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Database\Data\" />
-    <Folder Include="Database\StoredProcedure\" />
-    <Folder Include="Database\Tables\" />
+    <Content Include="Database\Create\Database\CreateDatabase.sql" />
+    <Content Include="Database\Create\Tables\dbo.Discount.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.Fruit.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.MeasurementType.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.Orders.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.OrderType.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.Stock.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.tblCountry.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.tblUser.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.tblUserDetails.Table.sql" />
+    <Content Include="Database\Create\Tables\dbo.tblUserType.Table.sql" />
+    <Content Include="Database\Insert\dbo.Discount.Table.sql" />
+    <Content Include="Database\Insert\dbo.Fruit.Table.sql" />
+    <Content Include="Database\Insert\dbo.MeasurementType.Table.sql" />
+    <Content Include="Database\Insert\dbo.OrderType.Table.sql" />
+    <Content Include="Database\Insert\dbo.tblCountry.Table.sql" />
+    <Content Include="Database\Insert\dbo.tblUser.Table.sql" />
+    <Content Include="Database\Insert\dbo.tblUserDetails.Table.sql" />
+    <Content Include="Database\Insert\dbo.tblUserType.Table.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblCountryRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblDiscountRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblFruitGetByFruitId.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblFruitRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblFruitUpsert.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblMeasurementUnitRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblOrderDelete.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblOrderRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblOrderSalesReportRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblOrderSave.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblOrderUpdateStatusById.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblSockUpsert.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblStockPurchaseReportRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserDelete.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserDetailsDelete.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserDetailsRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserDetailsRetrieveByUserType.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserDetailsSave.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserDetailsUpdate.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserGetUserIdByEmailAndPassword.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserSave.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserTypeRetrieve.StoredProcedure.sql" />
+    <Content Include="Database\StoredProcedure\dbo.tblUserupdate.StoredProcedure.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
